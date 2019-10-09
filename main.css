@@ -4,8 +4,10 @@
 
 }
 
-.bg-c-col{
+.navbar{
 	background-image: url("img/header.webp");
+	padding-left: 7em !important;
+	padding-right: 5em !important;
 }
 
 #Searchp:hover{
