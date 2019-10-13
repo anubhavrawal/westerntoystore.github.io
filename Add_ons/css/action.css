@@ -1,0 +1,49 @@
+.container{
+width: 100%;
+height: 90%;
+size: auto;
+}
+ 
+ .card{
+ 	margin-top: 1em;
+ 	margin-bottom: 1em;
+ 	border-style: ridge;	
+ }
+
+ .container .card{
+ 	width: 100%;
+
+ }
+
+
+	.card-body{
+		color: black;
+
+	}
+
+.card{
+    transition: .5s all ease;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    position: relative;
+    bottom: 0px;
+
+  width: 100%;
+  height: 95%;
+  vertical-align: middle;
+
+}
+
+.card-img-top{
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
+  
+
+}
+
+.card:hover{
+    -webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+    box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
+    bottom: 15px;
+}
