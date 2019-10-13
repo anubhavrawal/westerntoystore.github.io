@@ -50,6 +50,10 @@
   #login{
     margin-left: 1em;
   }
+  #login:hover{
+    background-color: green;
+    transition: .4s ease-out;
+  }
 
 
 }
@@ -210,13 +214,27 @@ section .section-title {
     font-weight: 700;
 }
 
+@media (min-width:768px){
+  .in-marg1{
+    margin-left: 15%;
+  }
+
+  .in-marg2{
+    margin-left: 35%;
+  }
+}
+
 @media (max-width:767px){
   #footer h5 {
     padding-left: 0;
     border-left: transparent;
     padding-bottom: 0px;
     margin-bottom: 10px;
-}
+  }
+
+  #break{
+    margin-top: 1em;
+  }
 }
 
 .col_one_third{

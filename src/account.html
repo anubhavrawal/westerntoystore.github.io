@@ -5,8 +5,8 @@
 	<title></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="main.css">
-	<link rel="stylesheet" href="Add_ons/bootstrap_4_0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../Add_ons/css/common.css">
+	<link rel="stylesheet" href="../Add_ons/bootstrap_4_0/css/bootstrap.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -18,7 +18,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-cust static-top">
     <div class="container">
       <a class="navbar-brand" href="#">
-            <img src="img/logo.png" alt="logo">
+            <img src="../img/logo.png" alt="logo">
           </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,10 +26,8 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
 
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-                  <span class="sr-only">(current)</span>
-                </a>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
           </li>
 
           <li class="nav-item">
@@ -44,8 +42,10 @@
             <a class="nav-link" href="#">Action</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" id="login" href="#">Login/Register</a>
+          <li class="nav-item active">
+            <a class="nav-link" id="login" href="#">Login/Register
+              <span class="sr-only">(current)</span>
+            </a>
           </li>
         </ul>
       </div>
@@ -53,117 +53,6 @@
   </nav>
 
 	<!--Nav bar END-->
-
-	<!-- Carousel BEGIN -->
-
-	<div id="crou_main" class="carousel slide" data-ride="carousel">
-
-	  <!-- Indicators -->
-	  <ul class="carousel-indicators">
-	    <li data-target="#crou_main" data-slide-to="0" class="active"></li>
-	    <li data-target="#crou_main" data-slide-to="1"></li>
-	    <li data-target="#crou_main" data-slide-to="2"></li>
-	  </ul>
-	  
-	  <!-- The slideshow -->
-	  <div class="carousel-inner">
-	    <div class="carousel-item active">
-	      <img src="img/main1.jpg" alt="Los Angeles">
-	    </div>
-	    <div class="carousel-item">
-	      <img src="img/maiincc.jpg" alt="Chicago">
-	    </div>
-	    <div class="carousel-item">
-	      <img src="img/covv.jpg" alt="New York" >
-	    </div>
-	  </div>
-	  
-	  <!-- Left and right controls -->
-	  <a class="carousel-control-prev" href="#crou_main" data-slide="prev">
-	    <span class="carousel-control-prev-icon"></span>
-	  </a>
-	  <a class="carousel-control-next" href="#crou_main" data-slide="next">
-	    <span class="carousel-control-next-icon"></span>
-	  </a>
-	</div>
-
-	<!-- Carousel END -->
-
-	<!--lightbox BEGIN -->
-
-	<section class="gallery-block grid-gallery">
-        <div class="container">
-
-            <div class="heading">
-                <h2>TOP SELLING</h2>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 col-lg-4 item">
-                    <a class="lightbox" href="#">
-                        <img class="img-fluid image scale-on-hover" src="img/image1.jpg">
-
-                        <div class="middle">
-                            <button type="button" class="btn btn-primary">Buy Now</button>
-                         </div>
-
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4 item">
-                    <a class="lightbox" href="#">
-                        <img class="img-fluid image scale-on-hover" src="img/image2.jpg">
-
-                        <div class="middle">
-                            <button type="button" class="btn btn-primary">Buy Now</button>
-                         </div>
-
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4 item">
-                    <a class="lightbox" href="#">
-                        <img class="img-fluid image scale-on-hover" src="img/image3.jpg">
-
-                        <div class="middle">
-				   			            <button type="button" class="btn btn-primary">Buy Now</button>
-					               </div>
-                    </a>
-
-                </div>
-                <div class="col-md-6 col-lg-4 item">
-                    <a class="lightbox" href="#">
-                        <img class="img-fluid image scale-on-hover" src="img/image4.jpg" alt="">
-
-                        <div class="middle">
-                            <button type="button" class="btn btn-primary">Buy Now</button>
-                         </div>
-
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4 item">
-                    <a class="lightbox" href="#">
-                        <img class="img-fluid image scale-on-hover" src="img/image5.jpg" alt="Batman">
-
-                        <div class="middle">
-                            <button type="button" class="btn btn-primary">Buy Now</button>
-                         </div>
-
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4 item">
-                    <a class="lightbox" href="#">
-                        <img class="img-fluid image scale-on-hover" src="img/image6.jpg" alt="Star-trooper">
-
-                        <div class="middle">
-                            <button type="button" class="btn btn-primary">Buy Now</button>
-                         </div>
-                        
-                    </a>
-                </div>
-
-            </div>
-        </div>
-	</section>
-	<!--lightbox END -->
 
 
 	<!--Footer begin-->
@@ -198,29 +87,26 @@
           </div>
 
           <div class="col-xs-12 col-sm-4 col-md-4" id="break">
-            <div class="in-marg1">
-            <h5 style="">About Western Toy </h5>
-            <ul class="list-unstyled quick-links"style="">
+            <h5>About Western Toy </h5>
+            <ul class="list-unstyled quick-links">
               <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
               <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
               <li><a href="#"><i class="fa fa-angle-double-right"></i>Retail Store Info</a></li>
               <li><a href="#"><i class="fa fa-angle-double-right"></i>Wester Toy Store is Buying</a></li>
             </ul>
-            </div>
           </div>
 
 
           <div class="col-xs-12 col-sm-4 col-md-4" >
-            <div class="in-marg2">
-            <h5 style="">Western Toy Policies</h5>
-            <ul class="list-unstyled quick-links" style="">
+            <h5>Western Toy Policies</h5>
+            <ul class="list-unstyled quick-links">
               <li><a href="#"><i class="fa fa-angle-double-right"></i>Shipping Policy</a></li>
               <li><a href="#"><i class="fa fa-angle-double-right"></i>Return and Cancellation</a></li>
               <li><a href="#"><i class="fa fa-angle-double-right"></i>Privacy and Security</a></li>
               <li><a href="#"><i class="fa fa-angle-double-right"></i>Pre-Orders</a></li>
             </ul>
           </div>
-          </div>
+
         </div>
       </div>
       <div class="Footer-logo">
@@ -230,7 +116,7 @@
                 <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
                 <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li class="list-inline-item"><a href="#"><i class="fa fa-google"></i></a></li>
                 <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-envelope"></i></a></li>
               </ul>
             </div>
@@ -247,9 +133,8 @@
     <!-- Footer END -->
     <!-- -->
 
-	<script src="Add_ons/bootstrap_4_0/jquery/jquery.min.js"></script>
-	<script src="Add_ons/bootstrap_4_0/js/bootstrap.min.js"></script>
-	<script src="main.js"></script>
+	<script src="../Add_ons/bootstrap_4_0/jquery/jquery.min.js"></script>
+	<script src="../Add_ons/bootstrap_4_0/js/bootstrap.min.js"></script>
 </body>
 
 </html>
