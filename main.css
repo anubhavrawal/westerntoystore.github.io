@@ -11,6 +11,49 @@
   background-color: #01013cdd;
 }
 
+.navbar-brand img{
+  height: 2.5em;
+  width: 11em;
+}
+
+.nav-link{
+  font-size: 1.2em;
+}
+
+
+#login{
+  background-color: red;
+  border-radius: 3em;
+  font-size: bold;
+  color: white;
+  text-align: center;
+}
+
+
+@media (max-width: 991px) {
+  
+  #login{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    width: 7em;
+
+  }
+}
+
+@media(min-width: 992px){
+ 
+  .nav-link:hover{
+    transform: scale(1.1);
+    transition: .4s ease-out;
+  }
+
+  #login{
+    margin-left: 1em;
+  }
+
+
+}
+
 
 /*Nav-bar END*/
 
@@ -21,7 +64,13 @@
 }
 
 #crou_main{
-	height: 50%;
+	height: 30em;
+  overflow: hidden;
+}
+
+.carousel-inner{
+  height: 30em;
+  overflow: hidden;
 }
 
 .carousel-inner img {
@@ -84,7 +133,7 @@
 	.gallery-block.grid-gallery .scale-on-hover:hover{
 		transform: scale(1.05);
 		box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15) !important;
-	}
+}
 
 
 }
