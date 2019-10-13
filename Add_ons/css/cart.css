@@ -5,6 +5,7 @@
 
 .shopping-cart.dark{
 	background-color: #f6f6f6;
+	padding: 0em 0em 2.5em 0em;
 }
 
 .shopping-cart .content{
@@ -13,8 +14,8 @@
 }
 
 .shopping-cart .block-heading{
-    padding-top: 50px;
-    margin-bottom: 40px;
+    padding-top: 30px;
+    margin-bottom: 25px;
     text-align: center;
 }
 
