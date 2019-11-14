@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../Add_ons/bootstrap_4_0/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../Add_ons/css/About.css">
   
   <link rel="stylesheet" type="text/css" href="../Add_ons/css/action.css">
 
@@ -28,27 +29,27 @@
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item">
-            <a class="nav-link" href="../index.html">Home</a>
+            <a class="nav-link" href="../index.php">Home</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="about.php">About</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="catlog.html">Puzzels</a>
+            <a class="nav-link" href="puzzel.php">Puzzels</a>
           </li>
 
-          <li class="nav-item active">
-            <a class="nav-link" href="action.html">Action</a>
+          <li class="nav-item">
+            <a class="nav-link" href="action.php">Action</a>
           </li>
 
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.html"><i class="fa fa-shopping-cart"></i></a>
+            <li class="nav-item active">
+              <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.php"><i class="fa fa-shopping-cart"></i></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" id="login" href="account.html">Login/Register</a>
+              <a class="nav-link" id="login" href="account.php">Login/Register</a>
             </li>
 
         </ul>
@@ -65,71 +66,69 @@
 
   <div class="col-md-4 col-lg-4">
     <div class="card">
-    <img class="card-img-top" src="..//img/captain.jpeg" alt="Card image" >
-
+    <img class="card-img-top" src="..//img/Jigsaw-Puzzle.jpg" alt="Card image" > <br>
     <div class="card-body">
-      <h4 class="card-title">Captain America</h4>
-      <p class="card-text">Here is the First Avenger for you!</p>
+      <h4 class="card-title">Jigsaw Puzzle</h4>
+      <p class="card-text">Solve this puzzle and enjoy your free time with fun!</p>
       <a href="#" class="btn btn-primary">Buy Now</a>
-      </div>
+
     </div>
+  </div>
   </div>
 
   <div class="col-md-4 col-lg-4" >
     <div class="card">
-    <img class="card-img-top" src="..//img/GUEST_6d7496ea-26a6-4786-b94b-6af8daf1dbff.jpg" alt="Card image" >
+    <img class="card-img-top" src="..//img/puzzle-1261138__340.jpg" alt="Card image" > <br>
     <div class="card-body">
-      <h4 class="card-title">Hulk</h4>
-      <p class="card-text">Hulk- the strongest avenger!</p>
+      <h4 class="card-title">Easy Puzzle</h4>
+      <p class="card-text">This is one of the easiest puzzles. You will enjoy each and every moment!</p>
       <a href="#" class="btn btn-primary">Buy Now</a>
     </div>
-    </div>
+  </div>
   </div>
 
   <div class="col-md-4 col-lg-4" >
     <div class="card">
-    <img class="card-img-top" src="..//img/dreadpool.jpeg" alt="Card image" >
+    <img class="card-img-top" src="..//img/babycrop.jpg" alt="Card image">
     <div class="card-body">
-      <h4 class="card-title">Dreadpool</h4>
-      <p class="card-text">Buy your favorite Dreadpool!</p>
+      <h4 class="card-title">Baby Puzzle</h4>
+      <p class="card-text">Solve this puzzle and create your new best friends!</p>
       <a href="#" class="btn btn-primary">Buy Now</a>
     </div>
-    </div>
+  </div>
   </div>
 
   <div class="col-md-4 col-lg-4" >
     <div class="card">
-    <img class="card-img-top" src="..//img/thor.jpg" alt="Card image">
+    <img class="card-img-top" src="..//img/SERENITYcrop.png" alt="Card image" >
     <div class="card-body">
-      <h4 class="card-title">Thor</h4>
-      <p class="card-text">Here is the God of Thunder for you!</p>
+      <h4 class="card-title">Serene Puzzle</h4>
+      <p class="card-text">Solve the puzzle  and the enjoy the serenity with it!</p>
       <a href="#" class="btn btn-primary">Buy Now</a>
     </div>
-    </div>
+  </div>
   </div>
 
   <div class="col-md-4 col-lg-4" >
     <div class="card">
-    <img class="card-img-top" src="..//img/ironman.jpg" alt="Card image" > <br><br><br>
-    <div class="card-body">
-      <h4 class="card-title">Iron Man</h4>
-      <p class="card-text">Buy your favourite Iron Man suit!</p>
+    <img class="card-img-top" src="..//img/dice.jpg" alt="Card image">
+    <div class="card-body"> <br>
+      <h4 class="card-title">Dice Puzzle</h4>
+      <p class="card-text">Solve this funny puzzle  and the enjoy the moment with it!</p>
        <a href="#" class="btn btn-primary">Buy Now</a>
-     </div>
     </div>
   </div>
-
-  
+  </div>
 
   <div class="col-md-4 col-lg-4" >
     <div class="card">
-    <img class="card-img-top" src="..//img/doctor1.jpg" alt="Card image" >
+    <img class="card-img-top" src="..//img/penguine-crop.jpg" alt="Card image" >
     <div class="card-body">
-      <h4 class="card-title">Doctor Strange</h4>
-      <p class="card-text">Play some magic tricks with the magician!</p>
+      <h4 class="card-title">Penguine Puzzle</h4>
+      <p class="card-text">Create the Penguine and spend your time with them!</p>
       <a href="#" class="btn btn-primary">Buy Now</a>
     </div>
-    </div>
+  </div>
   </div>
 
 

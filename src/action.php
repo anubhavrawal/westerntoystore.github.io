@@ -2,23 +2,21 @@
 <html>
 
 <head>
-	<title></title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="../Add_ons/css/common.css">
-	<link rel="stylesheet" href="../Add_ons/bootstrap_4_0/css/bootstrap.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="../Add_ons/css/about.css">
-
-  <link href="https://fonts.googleapis.com/css?family=Grenze&display=swap" rel="stylesheet">
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../Add_ons/css/common.css">
+  <link rel="stylesheet" href="../Add_ons/bootstrap_4_0/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  
+  <link rel="stylesheet" type="text/css" href="../Add_ons/css/action.css">
 
 </head>
 
 <body>
-	<!--Nav bar begin-->
-  <!--Navigation-->
-	 <nav class="navbar navbar-expand-lg navbar-dark bg-cust static-top">
+  <!--Nav bar begin-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-cust static-top">
     <div class="container">
       <a class="navbar-brand" href="#">
             <img src="../img/logo.png" alt="logo">
@@ -30,27 +28,27 @@
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item">
-            <a class="nav-link" href="../index.html">Home</a>
+            <a class="nav-link" href="../index.php">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="about.php">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="catlog.php">Puzzels</a>
           </li>
 
           <li class="nav-item active">
-            <a class="nav-link" href="about.html">About</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="catlog.html">Puzzels</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="action.html">Action</a>
+            <a class="nav-link" href="action.php">Action</a>
           </li>
 
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.html"><i class="fa fa-shopping-cart"></i></a>
+              <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.php"><i class="fa fa-shopping-cart"></i></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" id="login" href="account.html">Login/Register</a>
+              <a class="nav-link" id="login" href="account.php">Login/Register</a>
             </li>
 
         </ul>
@@ -58,37 +56,90 @@
     </div>
   </nav>
 
-	<!--Nav bar END-->
+  <!--Nav bar END-->
 
-<div class="left img-cont">
-    <img class="pic" src="..//img/lf.jpeg" alt="left-img">
-</div>
+<div class="container">
+  <!--h2>Card Image</h2-->
+  <div class="row">
+  <!---<p>Image at the top (card-img-top):</p>-->
 
-<div class="right img-cont" >
-  <img class="pic1" src="..//img/ri.jpg" alt="right-img">
-</div>
+  <div class="col-md-4 col-lg-4">
+    <div class="card">
+    <img class="card-img-top" src="..//img/captain.jpeg" alt="Card image" >
 
-<div class="container" id='main-content'>
-	<div class="info">
-    <!--<div class="info">-->
-		<center><h2 ><b>Welcome To Western Toy Store!</b></h2></center> <br>
-		
-		<p>Western Toy Store is Western Michigan University's no.1 online toy store. We are 100% authentic and provide money back gurantee within 60 days of purchase.</p>
-
-		<p>We have 100's of unique toys, puzzles, games that can put a smile on your kid's face. We sell produts at a resonable price with amazing offers and discounts.</p>
-
-		<p>It is now even easier to shop at our store. We accept most of the debit and credit cards, ApplePay, Google pay,PayPal and many more. Same day delivery is available in Kalamzoo area. For other areas it takes 3-5 business days to deliver the produts.</p>
-
-		<p>Our team is working best to provide you the best customer service experience. If you want to know more about our service and customer service, please visit our REVIEW page.</p>
-
-		<p>Have any complain or want to contact us? Please call us on <a href="tel:+1(269)8086172">+1(269)8086172</a> or <a href="mailto:info@westtoy.com">EMAIL</a> us. We would love to hear from you!</p>
+    <div class="card-body">
+      <h4 class="card-title">Captain America</h4>
+      <p class="card-text">Here is the First Avenger for you!</p>
+      <a href="#" class="btn btn-primary">Buy Now</a>
+      </div>
     </div>
-	
-	</div>
+  </div>
+
+  <div class="col-md-4 col-lg-4" >
+    <div class="card">
+    <img class="card-img-top" src="..//img/GUEST_6d7496ea-26a6-4786-b94b-6af8daf1dbff.jpg" alt="Card image" >
+    <div class="card-body">
+      <h4 class="card-title">Hulk</h4>
+      <p class="card-text">Hulk- the strongest avenger!</p>
+      <a href="#" class="btn btn-primary">Buy Now</a>
+    </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-lg-4" >
+    <div class="card">
+    <img class="card-img-top" src="..//img/dreadpool.jpeg" alt="Card image" >
+    <div class="card-body">
+      <h4 class="card-title">Dreadpool</h4>
+      <p class="card-text">Buy your favorite Dreadpool!</p>
+      <a href="#" class="btn btn-primary">Buy Now</a>
+    </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-lg-4" >
+    <div class="card">
+    <img class="card-img-top" src="..//img/thor.jpg" alt="Card image">
+    <div class="card-body">
+      <h4 class="card-title">Thor</h4>
+      <p class="card-text">Here is the God of Thunder for you!</p>
+      <a href="#" class="btn btn-primary">Buy Now</a>
+    </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-lg-4" >
+    <div class="card">
+    <img class="card-img-top" src="..//img/ironman.jpg" alt="Card image" > <br><br><br>
+    <div class="card-body">
+      <h4 class="card-title">Iron Man</h4>
+      <p class="card-text">Buy your favourite Iron Man suit!</p>
+       <a href="#" class="btn btn-primary">Buy Now</a>
+     </div>
+    </div>
+  </div>
+
+  
+
+  <div class="col-md-4 col-lg-4" >
+    <div class="card">
+    <img class="card-img-top" src="..//img/doctor1.jpg" alt="Card image" >
+    <div class="card-body">
+      <h4 class="card-title">Doctor Strange</h4>
+      <p class="card-text">Play some magic tricks with the magician!</p>
+      <a href="#" class="btn btn-primary">Buy Now</a>
+    </div>
+    </div>
+  </div>
 
 
-	<!--Footer begin-->
-	<section id="footer">
+</div>
+</div>
+
+
+  
+  <!--Footer begin-->
+  <section id="footer">
       <div class="container">
       <div class="row" style="margin-bottom: 20px;" >
           <div class="input-group mb-3" style="width: 40%; margin-left: 31%;">
@@ -168,9 +219,9 @@
     <!-- Footer END -->
     <!-- -->
 
-	<script src="../Add_ons/bootstrap_4_0/jquery/jquery.min.js"></script>
-	<script src="../Add_ons/bootstrap_4_0/js/bootstrap.min.js"></script>
-	<script src="main.js"></script>
+  <script src="../Add_ons/bootstrap_4_0/jquery/jquery.min.js"></script>
+  <script src="../Add_ons/bootstrap_4_0/js/bootstrap.min.js"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>

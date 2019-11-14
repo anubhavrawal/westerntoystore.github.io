@@ -2,15 +2,14 @@
 <html>
 
 <head>
-  <title></title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../Add_ons/css/common.css">
-  <link rel="stylesheet" href="../Add_ons/bootstrap_4_0/css/bootstrap.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  
-  <link rel="stylesheet" type="text/css" href="../Add_ons/css/action.css">
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../Add_ons/css/common.css">
+  <link rel="stylesheet" href="../Add_ons/css/account.css">
+	<link rel="stylesheet" href="../Add_ons/bootstrap_4_0/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 </head>
 
@@ -28,27 +27,27 @@
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item">
-            <a class="nav-link" href="../index.html">Home</a>
+            <a class="nav-link" href="../index.php">Home</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-          </li>
-
-          <li class="nav-item active">
-            <a class="nav-link" href="catlog.html">Puzzels</a>
+            <a class="nav-link" href="about.php">About</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="action.html">Action</a>
+            <a class="nav-link" href="catlog.php">Puzzels</a>
           </li>
 
-            <li class="nav-item ">
-              <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.html"><i class="fa fa-shopping-cart"></i></a>
-            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="action.php">Action</a>
+          </li>
 
             <li class="nav-item">
-              <a class="nav-link" id="login" href="account.html">Login/Register</a>
+              <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.php"><i class="fa fa-shopping-cart"></i></a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link" id="login" href="account.php">Login/Register</a>
             </li>
 
         </ul>
@@ -58,84 +57,42 @@
 
   <!--Nav bar END-->
 
-<div class="container">
-  <!--h2>Card Image</h2-->
-  <div class="row">
-  <!---<p>Image at the top (card-img-top):</p>-->
+  <!--FORM BEGIN-->
 
-  <div class="col-md-4 col-lg-4">
-    <div class="card">
-    <img class="card-img-top" src="..//img/Jigsaw-Puzzle.jpg" alt="Card image" > <br>
-    <div class="card-body">
-      <h4 class="card-title">Jigsaw Puzzle</h4>
-      <p class="card-text">Solve this puzzle and enjoy your free time with fun!</p>
-      <a href="#" class="btn btn-primary">Buy Now</a>
-
-    </div>
-  </div>
-  </div>
-
-  <div class="col-md-4 col-lg-4" >
-    <div class="card">
-    <img class="card-img-top" src="..//img/puzzle-1261138__340.jpg" alt="Card image" > <br>
-    <div class="card-body">
-      <h4 class="card-title">Easy Puzzle</h4>
-      <p class="card-text">This is one of the easiest puzzles. You will enjoy each and every moment!</p>
-      <a href="#" class="btn btn-primary">Buy Now</a>
-    </div>
-  </div>
-  </div>
-
-  <div class="col-md-4 col-lg-4" >
-    <div class="card">
-    <img class="card-img-top" src="..//img/babycrop.jpg" alt="Card image">
-    <div class="card-body">
-      <h4 class="card-title">Baby Puzzle</h4>
-      <p class="card-text">Solve this puzzle and create your new best friends!</p>
-      <a href="#" class="btn btn-primary">Buy Now</a>
-    </div>
-  </div>
-  </div>
-
-  <div class="col-md-4 col-lg-4" >
-    <div class="card">
-    <img class="card-img-top" src="..//img/SERENITYcrop.png" alt="Card image" >
-    <div class="card-body">
-      <h4 class="card-title">Serene Puzzle</h4>
-      <p class="card-text">Solve the puzzle  and the enjoy the serenity with it!</p>
-      <a href="#" class="btn btn-primary">Buy Now</a>
-    </div>
-  </div>
-  </div>
-
-  <div class="col-md-4 col-lg-4" >
-    <div class="card">
-    <img class="card-img-top" src="..//img/dice.jpg" alt="Card image">
-    <div class="card-body"> <br>
-      <h4 class="card-title">Dice Puzzle</h4>
-      <p class="card-text">Solve this funny puzzle  and the enjoy the moment with it!</p>
-       <a href="#" class="btn btn-primary">Buy Now</a>
-    </div>
-  </div>
-  </div>
-
-  <div class="col-md-4 col-lg-4" >
-    <div class="card">
-    <img class="card-img-top" src="..//img/penguine-crop.jpg" alt="Card image" >
-    <div class="card-body">
-      <h4 class="card-title">Penguine Puzzle</h4>
-      <p class="card-text">Create the Penguine and spend your time with them!</p>
-      <a href="#" class="btn btn-primary">Buy Now</a>
-    </div>
-  </div>
-  </div>
-
-
-</div>
-</div>
-
-
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card card-signin my-5">
+            <div class="card-body">
+              <h5 class="card-title text-center">Sign In</h5>
+              <form class="form-signin">
+                <div class="form-label-group">
+                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                  <label for="inputEmail">Email address</label>
+                </div>
   
+                <div class="form-label-group">
+                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <label for="inputPassword">Password</label>
+                </div>
+  
+                <div class="custom-control custom-checkbox mb-3">
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">Remember password</label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                <hr class="my-4">
+                <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fa fa-google mr-2"></i> Sign in with Google</button>
+                <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fa fa-facebook mr-2"></i> Sign in with Facebook</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <!--FORM END-->
   <!--Footer begin-->
   <section id="footer">
       <div class="container">
@@ -217,9 +174,8 @@
     <!-- Footer END -->
     <!-- -->
 
-  <script src="../Add_ons/bootstrap_4_0/jquery/jquery.min.js"></script>
-  <script src="../Add_ons/bootstrap_4_0/js/bootstrap.min.js"></script>
-  <script src="main.js"></script>
+	<script src="../Add_ons/bootstrap_4_0/jquery/jquery.min.js"></script>
+	<script src="../Add_ons/bootstrap_4_0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

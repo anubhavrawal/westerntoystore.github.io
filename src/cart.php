@@ -27,27 +27,27 @@
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item">
-            <a class="nav-link" href="../index.html">Home</a>
+            <a class="nav-link" href="../index.php">Home</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="about.php">About</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="catlog.html">Puzzels</a>
+            <a class="nav-link" href="catlog.php">Puzzels</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="action.html">Action</a>
+            <a class="nav-link" href="action.php">Action</a>
           </li>
 
             <li class="nav-item active">
-              <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.html"><i class="fa fa-shopping-cart"></i></a>
+              <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.php"><i class="fa fa-shopping-cart"></i></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" id="login" href="account.html">Login/Register</a>
+              <a class="nav-link" id="login" href="account.php">Login/Register</a>
             </li>
 
         </ul>
