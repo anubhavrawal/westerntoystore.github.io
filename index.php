@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE php>
+<php>
 
 <head>
 	<title></title>
@@ -37,23 +37,23 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="src/about.html">About</a>
+              <a class="nav-link" href="src/about.php">About</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="src/catlog.html">Puzzels</a>
+              <a class="nav-link" href="src/catlog.php">Puzzels</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="src/action.html">Action</a>
+              <a class="nav-link" href="src/action.php">Action</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="src/Cart.html"><i class="fa fa-shopping-cart"></i></a>
+              <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="src/Cart.php"><i class="fa fa-shopping-cart"></i></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" id="login" href="src/account.html">Login/Register</a>
+              <a class="nav-link" id="login" href="src/account.php">Login/Register</a>
             </li>
 
           </ul>
@@ -113,7 +113,7 @@
                           <img class="img-fluid image scale-on-hover" src="img/image1.jpg">
 
                           <div class="middle">
-                              <button type="button" onclick="window.location.href = 'src/cart.html';" class="btn btn-primary">Add to Cart</button>
+                              <button type="button" onclick="window.location.href = 'src/cart.php';" class="btn btn-primary">Add to Cart</button>
                           </div>
 
                       </a>
@@ -123,7 +123,7 @@
                           <img class="img-fluid image scale-on-hover" src="img/image2.jpg">
 
                           <div class="middle">
-                              <button type="button" onclick="window.location.href = 'src/cart.html';" class="btn btn-primary">Add to Cart</button>
+                              <button type="button" onclick="window.location.href = 'src/cart.php';" class="btn btn-primary">Add to Cart</button>
                           </div>
 
                       </a>
@@ -133,7 +133,7 @@
                           <img class="img-fluid image scale-on-hover" src="img/image3.jpg">
 
                           <div class="middle">
-                              <button type="button" onclick="window.location.href = 'src/cart.html';" class="btn btn-primary">Add to Cart</button>
+                              <button type="button" onclick="window.location.href = 'src/cart.php';" class="btn btn-primary">Add to Cart</button>
                           </div>
                       </a>
 
@@ -143,7 +143,7 @@
                           <img class="img-fluid image scale-on-hover" src="img/image4.jpg" alt="">
 
                           <div class="middle">
-                              <button type="button" onclick="window.location.href = 'src/cart.html';" class="btn btn-primary">Add to Cart</button>
+                              <button type="button" onclick="window.location.href = 'src/cart.php';" class="btn btn-primary">Add to Cart</button>
                           </div>
 
                       </a>
@@ -153,7 +153,7 @@
                           <img class="img-fluid image scale-on-hover" src="img/image5.jpg" alt="Batman">
 
                           <div class="middle">
-                              <button type="button" onclick="window.location.href = 'src/cart.html';" class="btn btn-primary">Add to Cart</button>
+                              <button type="button" onclick="window.location.href = 'src/cart.php';" class="btn btn-primary">Add to Cart</button>
                           </div>
 
                       </a>
@@ -163,7 +163,7 @@
                           <img class="img-fluid image scale-on-hover" src="img/image6.jpg" alt="Star-trooper">
 
                           <div class="middle">
-                              <button type="button" onclick="window.location.href = 'src/cart.html';" class="btn btn-primary">Add to Cart</button>
+                              <button type="button" onclick="window.location.href = 'src/cart.php';" class="btn btn-primary">Add to Cart</button>
                           </div>
                           
                       </a>
@@ -262,4 +262,4 @@
 	<script src="main.js"></script>
 </body>
 
-</html>
+</php>

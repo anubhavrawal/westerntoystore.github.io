@@ -17,7 +17,6 @@
 
 <body>
 	<!--Nav bar begin-->
-  <!--Navigation-->
 	 <nav class="navbar navbar-expand-lg navbar-dark bg-cust static-top">
     <div class="container">
       <a class="navbar-brand" href="#">
@@ -30,27 +29,27 @@
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item">
-            <a class="nav-link" href="../index.html">Home</a>
-          </li>
-
-          <li class="nav-item active">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="../index.php">Home</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="catlog.html">Puzzels</a>
+            <a class="nav-link" href="about.php">About</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="action.html">Action</a>
+            <a class="nav-link" href="puzzel.php">Puzzel</a>
           </li>
 
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.html"><i class="fa fa-shopping-cart"></i></a>
+          <li class="nav-item">
+            <a class="nav-link" href="action.php">Action</a>
+          </li>
+
+            <li class="nav-item active">
+              <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.php"><i class="fa fa-shopping-cart"></i></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" id="login" href="account.html">Login/Register</a>
+              <a class="nav-link" id="login" href="account.php">Login/Register</a>
             </li>
 
         </ul>
@@ -68,7 +67,7 @@
   <img class="pic1" src="..//img/ri.jpg" alt="right-img">
 </div>
 
-<div class="container" id='main-content'>
+<div class="container">
 	<div class="info">
     <!--<div class="info">-->
 		<center><h2 ><b>Welcome To Western Toy Store!</b></h2></center> <br>
@@ -120,9 +119,9 @@
 
           <div class="col-xs-12 col-sm-4 col-md-4" id="break">
             <div class="in-marg1">
-            <h5 style="">About Western Toy </h5>
+            <h5 style="">about Western Toy </h5>
             <ul class="list-unstyled quick-links"style="">
-              <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
+              <li><a href="#"><i class="fa fa-angle-double-right"></i>about</a></li>
               <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
               <li><a href="#"><i class="fa fa-angle-double-right"></i>Retail Store Info</a></li>
               <li><a href="#"><i class="fa fa-angle-double-right"></i>Wester Toy Store is Buying</a></li>
