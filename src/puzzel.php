@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../Add_ons/bootstrap_4_0/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../Add_ons/css/About.css">
   
   <link rel="stylesheet" type="text/css" href="../Add_ons/css/action.css">
 
@@ -28,27 +29,27 @@
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item">
-            <a class="nav-link" href="../index.html">Home</a>
+            <a class="nav-link" href="../index.php">Home</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-          </li>
-
-          <li class="nav-item active">
-            <a class="nav-link" href="catlog.html">Puzzels</a>
+            <a class="nav-link" href="about.php">About</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="action.html">Action</a>
+            <a class="nav-link" href="puzzel.php">Puzzels</a>
           </li>
 
-            <li class="nav-item ">
-              <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.html"><i class="fa fa-shopping-cart"></i></a>
+          <li class="nav-item">
+            <a class="nav-link" href="action.php">Action</a>
+          </li>
+
+            <li class="nav-item active">
+              <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.php"><i class="fa fa-shopping-cart"></i></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" id="login" href="account.html">Login/Register</a>
+              <a class="nav-link" id="login" href="account.php">Login/Register</a>
             </li>
 
         </ul>

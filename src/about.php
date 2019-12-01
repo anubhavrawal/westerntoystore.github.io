@@ -1,30 +1,4 @@
 <!DOCTYPE html>
-<?php require_once('config.php'); ?>
-
-<?php
-  try{
-    $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS); 
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql_select = "select * from Employees order by LastName";
-    $Name_list = $pdo->query($sql_select);
-
-    $sql_all = "select * from Employees order by EmployeeID";
-    $tmp = $pdo->query($sql_all);
-    $Address_info = $tmp->fetchAll();
-
-    $sql_todo = "select * from employeetodo order by DateBy";
-    $tmp2 = $pdo->query($sql_todo);
-    $todo_list = $tmp2->fetchAll(); 
-    //"SELECT *, ROW_NUMBER() OVER(ORDER BY DateBy) AS IDNT FROM employeetodo" (Note: for SQL)  
-
-    $pdo = null;
-  }
-
-  catch (PDOException $e) {    
-    die( $e->getMessage() ); 
-} 
-
-
 <html>
 
 <head>
@@ -32,16 +6,18 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../Add_ons/css/common.css">
-  <link rel="stylesheet" href="../Add_ons/css/account.css">
 	<link rel="stylesheet" href="../Add_ons/bootstrap_4_0/css/bootstrap.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../Add_ons/css/about.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Grenze&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
-  <!--Nav bar begin-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-cust static-top">
+	<!--Nav bar begin-->
+	 <nav class="navbar navbar-expand-lg navbar-dark bg-cust static-top">
     <div class="container">
       <a class="navbar-brand" href="#">
             <img src="../img/logo.png" alt="logo">
@@ -61,18 +37,18 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="catlog.php">Puzzels</a>
+            <a class="nav-link" href="puzzel.php">Puzzel</a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href="action.php">Action</a>
           </li>
 
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.php"><i class="fa fa-shopping-cart"></i></a>
             </li>
 
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" id="login" href="account.php">Login/Register</a>
             </li>
 
@@ -81,46 +57,37 @@
     </div>
   </nav>
 
-  <!--Nav bar END-->
+	<!--Nav bar END-->
 
-  <!--FORM BEGIN-->
+<div class="left img-cont">
+    <img class="pic" src="..//img/lf.jpeg" alt="left-img">
+</div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-          <div class="card card-signin my-5">
-            <div class="card-body">
-              <h5 class="card-title text-center">Sign In</h5>
-              <form class="form-signin">
-                <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                  <label for="inputEmail">Email address</label>
-                </div>
-  
-                <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                  <label for="inputPassword">Password</label>
-                </div>
-  
-                <div class="custom-control custom-checkbox mb-3">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">Remember password</label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
-                <hr class="my-4">
-                <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fa fa-google mr-2"></i> Sign in with Google</button>
-                <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fa fa-facebook mr-2"></i> Sign in with Facebook</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="right img-cont" >
+  <img class="pic1" src="..//img/ri.jpg" alt="right-img">
+</div>
+
+<div class="container">
+	<div class="info">
+    <!--<div class="info">-->
+		<center><h2 ><b>Welcome To Western Toy Store!</b></h2></center> <br>
+		
+		<p>Western Toy Store is Western Michigan University's no.1 online toy store. We are 100% authentic and provide money back gurantee within 60 days of purchase.</p>
+
+		<p>We have 100's of unique toys, puzzles, games that can put a smile on your kid's face. We sell produts at a resonable price with amazing offers and discounts.</p>
+
+		<p>It is now even easier to shop at our store. We accept most of the debit and credit cards, ApplePay, Google pay,PayPal and many more. Same day delivery is available in Kalamzoo area. For other areas it takes 3-5 business days to deliver the produts.</p>
+
+		<p>Our team is working best to provide you the best customer service experience. If you want to know more about our service and customer service, please visit our REVIEW page.</p>
+
+		<p>Have any complain or want to contact us? Please call us on <a href="tel:+1(269)8086172">+1(269)8086172</a> or <a href="mailto:info@westtoy.com">EMAIL</a> us. We would love to hear from you!</p>
     </div>
+	
+	</div>
 
 
-  <!--FORM END-->
-  <!--Footer begin-->
-  <section id="footer">
+	<!--Footer begin-->
+	<section id="footer">
       <div class="container">
       <div class="row" style="margin-bottom: 20px;" >
           <div class="input-group mb-3" style="width: 40%; margin-left: 31%;">
@@ -152,9 +119,9 @@
 
           <div class="col-xs-12 col-sm-4 col-md-4" id="break">
             <div class="in-marg1">
-            <h5 style="">About Western Toy </h5>
+            <h5 style="">about Western Toy </h5>
             <ul class="list-unstyled quick-links"style="">
-              <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
+              <li><a href="#"><i class="fa fa-angle-double-right"></i>about</a></li>
               <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
               <li><a href="#"><i class="fa fa-angle-double-right"></i>Retail Store Info</a></li>
               <li><a href="#"><i class="fa fa-angle-double-right"></i>Wester Toy Store is Buying</a></li>
@@ -202,6 +169,7 @@
 
 	<script src="../Add_ons/bootstrap_4_0/jquery/jquery.min.js"></script>
 	<script src="../Add_ons/bootstrap_4_0/js/bootstrap.min.js"></script>
+	<script src="main.js"></script>
 </body>
 
 </html>
