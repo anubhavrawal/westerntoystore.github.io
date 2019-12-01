@@ -1,8 +1,8 @@
 <?php
 define('DBHOST', '');
 
-define('DBNAME', 'art');
-define('DBUSER', 'testuser');
+define('DBNAME', 'general');
+define('DBUSER', 'guest');
 define('DBPASS', 'mypassword');
-define('DBCONNSTRING','mysql:dbname=art;charset=utf8mb4;');
+define('DBCONNSTRING','mysql:dbname=general;charset=utf8mb4;');
 ?>
