@@ -5,24 +5,22 @@
   try{
     $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS); 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql_select = "select * from Employees order by LastName";
-    $Name_list = $pdo->query($sql_select);
+    $sql_select = "select * from useraccounts order by username";
+    $user_info = $pdo->query($sql_select);
 
-    $sql_all = "select * from Employees order by EmployeeID";
+    '''$sql_all = "select * from Employees order by EmployeeID";
     $tmp = $pdo->query($sql_all);
-    $Address_info = $tmp->fetchAll();
-
-    $sql_todo = "select * from employeetodo order by DateBy";
-    $tmp2 = $pdo->query($sql_todo);
-    $todo_list = $tmp2->fetchAll(); 
-    //"SELECT *, ROW_NUMBER() OVER(ORDER BY DateBy) AS IDNT FROM employeetodo" (Note: for SQL)  
+    $Address_info = $tmp->fetchAll();'''
 
     $pdo = null;
   }
 
   catch (PDOException $e) {    
     die( $e->getMessage() ); 
-} 
+  } 
+
+
+?>
 
 
 <html>
@@ -91,9 +89,16 @@
           <div class="card card-signin my-5">
             <div class="card-body">
               <h5 class="card-title text-center">Sign In</h5>
-              <form class="form-signin">
+              <form class="form-signin" action="foobar_submit.php" method="post" >
                 <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                  <?php
+                  while ($row = $user_info->fetch()) {
+                    if $row == Null:
+                      echo "";
+
+                  }
+                  echo"<input type='email' id='inputEmail' class='form-control' placeholder='Email address' required autofocus>"
+                  ?>
                   <label for="inputEmail">Email address</label>
                 </div>
   
