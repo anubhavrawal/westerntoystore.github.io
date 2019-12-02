@@ -5,14 +5,10 @@
   try{
     $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS); 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql_select = "select * from useraccounts order by username";
-    $user_info = $pdo->query($sql_select);
+    /*$sql_select = "select * from useraccounts order by username";
+    $user_info = $pdo->query($sql_select);*/
 
-    '''$sql_all = "select * from Employees order by EmployeeID";
-    $tmp = $pdo->query($sql_all);
-    $Address_info = $tmp->fetchAll();'''
-
-    $pdo = null;
+    #$pdo = null;
   }
 
   catch (PDOException $e) {    
@@ -89,21 +85,15 @@
           <div class="card card-signin my-5">
             <div class="card-body">
               <h5 class="card-title text-center">Sign In</h5>
-              <form class="form-signin" action="foobar_submit.php" method="post" >
-                <div class="form-label-group">
-                  <?php
-                  while ($row = $user_info->fetch()) {
-                    if $row == Null:
-                      echo "";
 
-                  }
-                  echo"<input type='email' id='inputEmail' class='form-control' placeholder='Email address' required autofocus>"
-                  ?>
+              <form class="form-signin" method="post" >
+                <div class="form-label-group">
+                  <input type='email' id='inputEmail' name="Email" class='form-control'  placeholder='Email address' required autofocus>
                   <label for="inputEmail">Email address</label>
                 </div>
   
                 <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
                   <label for="inputPassword">Password</label>
                 </div>
   
@@ -111,10 +101,72 @@
                   <input type="checkbox" class="custom-control-input" id="customCheck1">
                   <label class="custom-control-label" for="customCheck1">Remember password</label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" name="signin" type="submit">Sign in</button>
+                <?php
+                  if (isset($_POST['signin'])){
+                    $email=$_POST['Email'];
+                    $password=$_POST['password'];
+                    $sql="SELECT * FROM useraccounts WHERE email='$email'";
+
+                    $result= $pdo->query($sql);;
+                    $count= $result->rowCount();
+                    if($count==1){
+                      $row = $result->fetch();
+
+                      if (md5(md5($row['salt']).md5($password)) == $row['password']){
+                          /*session_register("username");
+                          session_register("password"); */
+                          echo "Login Successful";
+                          return true;
+                      }
+                      else {
+                          echo "Wrong Username or Password";
+                          return false;
+                      }
+                    }
+                    else{
+                        echo "Wrong Username or Password";
+                        return false;
+                    }
+                  }
+                ?>
                 <hr class="my-4">
-                <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fa fa-google mr-2"></i> Sign in with Google</button>
-                <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fa fa-facebook mr-2"></i> Sign in with Facebook</button>
+                <!--button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fa fa-google mr-2"></i> Sign in with Google</button>
+                <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fa fa-facebook mr-2"></i> Sign in with Facebook</button-->
+              </form>
+
+              <form class="form-signin" method="post" >
+                <div class="form-label-group">
+                  <input type='text' id='FName' name="Uname" class='form-control'  placeholder='Full name' required>
+                  <label for="FName">Full name</label>
+                </div>
+                <div class="form-label-group">
+                  <input type='email' id='EmailReg' name="Email" class='form-control'  placeholder='Email address' required autofocus>
+                  <label for="EmailReg">Email address</label>
+                </div>
+
+                <div class="form-label-group">
+                  <input type="password" id="PasswordReg" name="password" class="form-control" placeholder="Password" required>
+                  <label for="PasswordReg">Password</label>
+                </div>
+                <button class="btn btn-lg btn btn-secondary btn-block text-uppercase" name="Register" type="submit">Register</button>
+                <?php
+                  if (isset($_POST['Register'])){
+                    $Password_Reg = $_POST['password'];
+                    $Uname = $_POST['Uname'];
+                    $email = $_POST['Email'];
+                    $salt = 'abcd1';
+                    $encp_pass = (md5(md5($salt).md5($Password_Reg)));
+                    $statement = $pdo->prepare('INSERT INTO useraccounts (uname, email, password, salt) VALUES (?, ?, ?, ?)');
+                    $statement->execute([$Uname,$email, $encp_pass, $salt]);
+
+                    /*$sqlR = "INSERT INTO useraccounts (uname, email, password, salt) VALUES ('$Uname','$email', '$encp_pass', '$salt')";
+                    $pdo->exec($sqlR);*/
+                    echo "New record created successfully";
+                  }
+
+                ?>
+
               </form>
             </div>
           </div>
