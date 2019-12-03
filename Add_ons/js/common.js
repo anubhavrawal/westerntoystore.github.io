@@ -4,12 +4,12 @@ $(function() {
     });
 });
 
-<?php session_start();?>
-
-<?php 
-	if (isset($_SESSION['user'])){
-		echo '<script>' 
-		echo '</script>' 
-	}
-
->
+/*
+ $(document).ready(function() {
+    if (!<?php echo isset($_SESSION["sess_user"])?'true':'false'; ?>) {
+      document.getElementById('login').style.display = 'none';
+    } else {
+      alert('work')
+      location.href = 'src/about.php';
+    }
+});*/

@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+<?php
+if(!session_id()){
+  session_start();
+}
+?>
+
 
 <head>
   <title></title>

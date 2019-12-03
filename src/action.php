@@ -13,6 +13,7 @@
   <script src="../Add_ons/js/common.js"></script>
   
   <link rel="stylesheet" type="text/css" href="../Add_ons/css/action.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 

@@ -1,5 +1,26 @@
-<!DOCTYPE php>
-<php>
+<!DOCTYPE html>
+<html>
+<?php require_once('src/config.php'); ?>
+
+<?php 
+  /*if(isset($_SESSION["sess_user"])){
+    echo "<script>";
+    echo "document.getElementById('login').style.display = 'none';";
+    echo "</script>";
+  }*/
+  try{
+    $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS); 
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql_select = "select * from products order by id";
+    $user_info = $pdo->query($sql_select);
+
+    #$pdo = null;
+  }
+
+  catch (PDOException $e) {    
+    die( $e->getMessage() ); 
+  } 
+?>
 
 <head>
 	<title></title>
@@ -14,12 +35,23 @@
 </head>
 
 <body>
+  <script >
+    function foo () {
+      $.ajax({
+        url:"src/index_temp.php", //the page containing php script
+        type: "POST", //request type
+        success:function(result){
+         result;
+       }
+     });
+    }
+  </script>
   
-  <div class="preload">
+  <!--div class="preload">
     <img src="img/loading.gif" alt="Loading" />
   </div>
   
-  <div class="web-content">
+  <div class="web-content"-->
     <!--Nav bar begin-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-cust static-top">
       <div class="container">
@@ -102,73 +134,35 @@
 
     <section class="gallery-block grid-gallery">
           <div class="container">
-
               <div class="heading">
                   <h2>TOP SELLING</h2>
               </div>
-
               <div class="row">
-                  <div class="col-md-6 col-lg-4 item">
-                      <a class="lightbox" href="#">
-                          <img class="img-fluid image scale-on-hover" src="img/image1.jpg">
+                <?php
+                  while ($row = $user_info->fetch() ) {
+                    $trackid = $row['id'];
+                    echo '<div class="col-md-6 col-lg-4 item">';
+                      echo "<a class='lightbox' href='?id=".$trackid."'>";
+                        echo '<img class="img-fluid image scale-on-hover" src='  .$row['src'] . '>';
 
-                          <div class="middle">
-                              <button type="button" onclick="window.location.href = 'src/cart.php';" class="btn btn-primary">Add to Cart</button>
-                          </div>
+                        echo '<div class="middle">';
+                            echo '<button type="button" class="btn btn-primary">Add to Cart</button>';
+                        echo'</div>';
+                        
+                        if (isset($_GET['id'])) {
+                          if ($_GET['id'] ==$row['id']){
+                            $statement = $pdo->prepare('INSERT INTO cart (id, name, src, price, stock, soldby) VALUES (?, ?, ?, ?,?,?)');
+                            $statement->execute([$row['id'], $row['name'], $row['src'], $row['price'], $row['stock'], $row['soldby']]);
+                            echo "Added to cart";
+                          }
+                        //if($_POST['action'] == '') {
+                        }
 
-                      </a>
-                  </div>
-                  <div class="col-md-6 col-lg-4 item">
-                      <a class="lightbox" href="#">
-                          <img class="img-fluid image scale-on-hover" src="img/image2.jpg">
 
-                          <div class="middle">
-                              <button type="button" onclick="window.location.href = 'src/cart.php';" class="btn btn-primary">Add to Cart</button>
-                          </div>
-
-                      </a>
-                  </div>
-                  <div class="col-md-6 col-lg-4 item">
-                      <a class="lightbox" href="#">
-                          <img class="img-fluid image scale-on-hover" src="img/image3.jpg">
-
-                          <div class="middle">
-                              <button type="button" onclick="window.location.href = 'src/cart.php';" class="btn btn-primary">Add to Cart</button>
-                          </div>
-                      </a>
-
-                  </div>
-                  <div class="col-md-6 col-lg-4 item">
-                      <a class="lightbox" href="#">
-                          <img class="img-fluid image scale-on-hover" src="img/image4.jpg" alt="">
-
-                          <div class="middle">
-                              <button type="button" onclick="window.location.href = 'src/cart.php';" class="btn btn-primary">Add to Cart</button>
-                          </div>
-
-                      </a>
-                  </div>
-                  <div class="col-md-6 col-lg-4 item">
-                      <a class="lightbox" href="#">
-                          <img class="img-fluid image scale-on-hover" src="img/image5.jpg" alt="Batman">
-
-                          <div class="middle">
-                              <button type="button" onclick="window.location.href = 'src/cart.php';" class="btn btn-primary">Add to Cart</button>
-                          </div>
-
-                      </a>
-                  </div>
-                  <div class="col-md-6 col-lg-4 item">
-                      <a class="lightbox" href="#">
-                          <img class="img-fluid image scale-on-hover" src="img/image6.jpg" alt="Star-trooper">
-
-                          <div class="middle">
-                              <button type="button" onclick="window.location.href = 'src/cart.php';" class="btn btn-primary">Add to Cart</button>
-                          </div>
-                          
-                      </a>
-                  </div>
-
+                      echo'</a>';
+                    echo'</div>';
+                  }
+                ?>
               </div>
           </div>
     </section>
@@ -262,4 +256,4 @@
 	<script src="main.js"></script>
 </body>
 
-</php>
+</html>
