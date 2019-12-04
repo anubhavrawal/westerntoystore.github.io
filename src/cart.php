@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
-<?php
-if(!session_id()){
-  session_start();
-}
-?>
+<?php require_once('config.php'); ?>
+<?php 
+  /*if(isset($_SESSION["sess_user"])){
+    echo "<script>";
+    echo "document.getElementById('login').style.display = 'none';";
+    echo "</script>";
+  }*/
+  try{
+    $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS); 
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql_select = "select * from cart order by id";
+    $user_info = $pdo->query($sql_select);
 
+    #$pdo = null;
+  }
+
+  catch (PDOException $e) {    
+    die( $e->getMessage() ); 
+  } 
+?>
 
 <head>
   <title></title>
@@ -76,102 +90,55 @@ if(!session_id()){
           <div class="row">
             <div class="col-md-12 col-lg-8">
               <div class="items">
-                <div class="product">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <img class="img-fluid mx-auto d-block image" src="../img/image1.jpg">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="info">
-                        <div class="row">
-                          <div class="col-md-5 product-name">
-                            <div class="product-name">
-                              <a href="#">Iron Man Toy</a>
-                              <div class="product-info">
-                                <div>Dimention: <span class="value">(5 x 5 x 5) inch </span></div>
-                                <div>Sold by: <span class="value">Marvel Entertainment</span></div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-md-4 quantity">
-                            <label for="quantity">Quantity:</label>
-                            <input id="quantity" type="number" value ="1" class="form-control quantity-input">
-                          </div>
-                          <div class="col-md-3 price">
-                            <span>$15</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="product">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <img class="img-fluid mx-auto d-block image" src="../img/image2.jpg">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="info">
-                        <div class="row">
-                          <div class="col-md-5 product-name">
-                            <div class="product-name">
-                              <a href="#">Altia Toy</a>
-                              <div class="product-info">
-                                <div>Dimention: <span class="value">(5 x 5 x 5) inch</span></div>
-                                <div>Sold by: <span class="value">Marvel Entertainment</span></div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-md-4 quantity">
-                            <label for="quantity">Quantity:</label>
-                            <input id="quantity" type="number" value ="1" class="form-control quantity-input">
-                          </div>
-                          <div class="col-md-3 price">
-                            <span>$15</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="product">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <img class="img-fluid mx-auto d-block image" src="../img/image3.jpg">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="info">
-                        <div class="row">
-                          <div class="col-md-5 product-name">
-                            <div class="product-name">
-                              <a href="#">Aquaman Toy</a>
-                              <div class="product-info">
-                                <div>Dimention: <span class="value">(5 x 5 x 5) inch</span></div>
-                                <div>Sold by: <span class="value">DC Entertainment</span></div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-md-4 quantity">
-                            <label for="quantity">Quantity:</label>
-                            <input id="quantity" type="number" value ="1" class="form-control quantity-input">
-                          </div>
-                          <div class="col-md-3 price">
-                            <span>$15</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
+                    <?php
+                      $Check = False;
+                        while ($row = $user_info->fetch() ) {
+                          echo '<div class="product">';
+                             echo '<div class="row">';
+                              echo '<div class="col-md-3">';
+                                echo '<img class="img-fluid mx-auto d-block image" src="../'.$row['src'] .'">';
+                              echo '</div>';
+                              echo '<div class="col-md-8">';
+                                echo '<div class="info">';
+                                  echo '<div class="row">';
+                                    echo '<div class="col-md-5 product-name">';
+                                      echo '<div class="product-name">';
+                                        echo '<a href="#">'. $row['name'] .'</a>';
+                                        echo '<div class="product-info">';
+                                          echo '<div>Dimention: <span class="value">(5 x 5 x 5) inch </span></div>';
+                                          echo '<div>Sold by: <span class="value">'.$row['soldby'].'</span></div>';
+                                        echo '</div>';
+                                      echo '</div>';
+                                    echo '</div>';
+                                    echo '<div class="col-md-4 quantity">';
+                                      echo '<label for="quantity">Quantity:</label>';
+                                      echo '<input id="quantity" type="number" value ="1" class="form-control quantity-input">';
+                                    echo '</div>';
+                                    echo '<div class="col-md-3 price">';
+                                      //echo '<label for="price">Price:</label>';
+                                      echo '<span id = "price">$'.$row['price'].'</span>';
+                                    echo '</div>';
+                                  echo '</div>';
+                                echo '</div>';
+                              echo '</div>';
+                            echo '</div>';
+                          echo'</div>';
+                          $Check = True;
+                        }
+                        if ($Check == False){
+                            echo("No item in the Cart!!!");
+                        }
+                    ?>
               </div>
             </div>
             <div class="col-md-12 col-lg-4">
               <div class="summary">
                 <h3>Summary</h3>
-                <div class="summary-item"><span class="text">Subtotal</span><span class="price">$45</span></div>
+                <div class="summary-item"><span class="text">Subtotal</span><span class="price">$0</span></div>
                 <div class="summary-item"><span class="text">Discount</span><span class="price">$0</span></div>
                 <div class="summary-item"><span class="text">Shipping</span><span class="price">$0</span></div>
-                <div class="summary-item"><span class="text">Total</span><span class="price">$45</span></div>
+                <div class="summary-item"><span class="text">Total</span><span class="price">$0</span></div>
                 <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
               </div>
             </div>

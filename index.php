@@ -35,17 +35,6 @@
 </head>
 
 <body>
-  <script >
-    function foo () {
-      $.ajax({
-        url:"src/index_temp.php", //the page containing php script
-        type: "POST", //request type
-        success:function(result){
-         result;
-       }
-     });
-    }
-  </script>
   
   <!--div class="preload">
     <img src="img/loading.gif" alt="Loading" />
@@ -151,9 +140,16 @@
                         
                         if (isset($_GET['id'])) {
                           if ($_GET['id'] ==$row['id']){
-                            $statement = $pdo->prepare('INSERT INTO cart (id, name, src, price, stock, soldby) VALUES (?, ?, ?, ?,?,?)');
-                            $statement->execute([$row['id'], $row['name'], $row['src'], $row['price'], $row['stock'], $row['soldby']]);
-                            echo "Added to cart";
+                            try {
+                              $statement = $pdo->prepare('INSERT INTO cart (id, name, src, price, quantity, soldby) VALUES (?, ?, ?, ?,?,?)');
+                              $statement->execute([$row['id'], $row['name'], $row['src'], $row['price'], '1' , $row['soldby']]);
+                              echo "Added to cart";
+                            }
+                            catch (\PDOException $e) {
+                              if ($e->errorInfo[1] == 1062) {
+                                  echo "Item already in the cart";
+                              }
+                            }
                           }
                         //if($_POST['action'] == '') {
                         }
