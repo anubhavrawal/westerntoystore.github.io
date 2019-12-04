@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="../Add_ons/bootstrap_4_0/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 
@@ -99,26 +100,37 @@
                               echo '<div class="col-md-3">';
                                 echo '<img class="img-fluid mx-auto d-block image" src="../'.$row['src'] .'">';
                               echo '</div>';
+
                               echo '<div class="col-md-8">';
                                 echo '<div class="info">';
                                   echo '<div class="row">';
+
                                     echo '<div class="col-md-5 product-name">';
                                       echo '<div class="product-name">';
                                         echo '<a href="#">'. $row['name'] .'</a>';
                                         echo '<div class="product-info">';
                                           echo '<div>Dimention: <span class="value">(5 x 5 x 5) inch </span></div>';
                                           echo '<div>Sold by: <span class="value">'.$row['soldby'].'</span></div>';
+                                          echo '<div>Unit Price($): <span class="value" id ="u_price">'.$row['price'].'</span></div>';
                                         echo '</div>';
                                       echo '</div>';
                                     echo '</div>';
-                                    echo '<div class="col-md-4 quantity">';
+
+                                    echo '<div class="col-md-3 quantity">';
                                       echo '<label for="quantity">Quantity:</label>';
-                                      echo '<input onkeydown="return false" onChange="cart_updt(this.value);" id="quantity" type="number" min="1" max = "10" value ="1" class="form-control quantity-input">';
+                                      echo '<input onChange="cart_updt();" id="quantity" type="number" min="1" max = "10" value ="1" class="form-control quantity-input">';
                                     echo '</div>';
-                                    echo '<div class="col-md-3 price">';
-                                      //echo '<label for="price">Price:</label>';
-                                      echo '<span id = "price">$'.$row['price'].'</span>';
+
+                                    echo '<div class="col-md-2 price">';
+                                      echo '<label id = "p_label" for="price">Price</label>';
+                                      echo '<span class = "t_price">12</span>';
                                     echo '</div>';
+
+                                    echo '<div class="col-md-2 del">';
+                                      //echo '';
+                                      echo '<button type="button" class="btn btn-danger">Delete</button>';
+                                    echo '</div>';
+
                                   echo '</div>';
                                 echo '</div>';
                               echo '</div>';
@@ -135,11 +147,91 @@
             <div class="col-md-12 col-lg-4">
               <div class="summary">
                 <h3>Summary</h3>
-                <div class="summary-item"><span class="text">Subtotal</span><span class="price">$0</span></div>
-                <div class="summary-item"><span class="text">Discount</span><span class="price">$0</span></div>
-                <div class="summary-item"><span class="text">Shipping</span><span class="price">$0</span></div>
-                <div class="summary-item"><span class="text">Total</span><span class="price">$0</span></div>
-                <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
+                <div class="summary-item"><span class="text">Subtotal</span><span class="price" id = "subtotal">$0</span></div>
+                <div class="summary-item"><span class="text">Discount</span><span class="price" id = "discount" >$0</span></div>
+                <div class="summary-item"><span class="text">Shipping</span><span class="price" id = "shipping" >$0</span></div>
+                <div class="summary-item"><span class="text">Total</span><span class="price" id = "total" >$0</span></div>
+                <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#checkoutModal" >Checkout</button>
+
+                <!--Modal dialoag for checkout-->
+                <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-body">
+
+                        <div class="container-fluid">
+                          <div class="row">
+                              <div class="col-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+                                  <div id="pay-invoice" class="card">
+                                      <div class="card-body">
+                                          <div class="card-title">
+                                              <h3 class="text-center">Pay Invoice</h3>
+                                          </div>
+                                          <hr>
+                                          <form method="post" novalidate="novalidate" class="needs-validation">
+                                              <div class="form-group text-center">
+                                                  <ul class="list-inline">
+                                                      <li class="list-inline-item"><i class="text-muted fa fa-cc-visa fa-2x"></i></li>
+                                                      <li class="list-inline-item"><i class="fa fa-cc-mastercard fa-2x"></i></li>
+                                                      <li class="list-inline-item"><i class="fa fa-cc-amex fa-2x"></i></li>
+                                                      <li class="list-inline-item"><i class="fa fa-cc-discover fa-2x"></i></li>
+                                                  </ul>
+                                              </div>
+                                              <div class="form-group">
+                                                  <label for="cc-payment" class="control-label ">Payment amount</label>
+                                                  <input id="cc-payment" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" required value="100.00">
+                                                  <span class="invalid-feedback">Enter the payment amount</span>
+                                              </div>
+                                              <div class="form-group has-success">
+                                                  <label for="cc-name" class="control-label ">Name on card</label>
+                                                  <input id="cc-name" name="cc-name" type="text" class="form-control cc-name" required autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
+                                                  <span class="invalid-feedback">Enter the name as shown on credit card</span>
+                                              </div>
+                                              <div class="form-group">
+                                                  <label for="cc-number" class="control-label">Card number</label>
+                                                  <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" required="" pattern="[0-9]{16}">
+                                                  <span class="invalid-feedback">Enter a valid 16 digit card number</span>
+                                              </div>
+                                              <div class="row">
+                                                  <div class="col-6">
+                                                      <div class="form-group">
+                                                          <label for="cc-exp" class="control-label ">Expiration</label>
+                                                          <input id="cc-exp" name="cc-exp" type="tel" class="form-control cc-exp" required placeholder="MM / YY" autocomplete="cc-exp">
+                                                          <span class="invalid-feedback">Enter the expiration date</span>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-6">
+                                                      <label for="x_card_code" class="control-label ">Security code</label>
+                                                      <div class="input-group">
+                                                          <input id="x_card_code" name="x_card_code" type="tel" class="form-control cc-cvc" required autocomplete="off">
+                                                          <span class="invalid-feedback order-last">Enter the 3-digit code on back</span>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="form-group">
+                                                  <label for="x_zip" class="control-label ">Postal code</label>
+                                                  <input id="x_zip" name="x_zip" type="text" class="form-control" value="" data-val="true" data-val-required="Please enter the ZIP/Postal code" autocomplete="postal-code">
+                                                  <span class="help-block" data-valmsg-for="x_zip" data-valmsg-replace="true"></span>
+                                              </div>
+                                              <div>
+                                                <button id="payment-button" type="submit" class="btn btn-sm btn-info btn-block">
+                                                    <i class="fa fa-lock fa-sm"></i>&nbsp;
+                                                    <span id="payment-button-amount">Pay $100.00</span>
+                                                </button>
+                                              </div>
+                                          </form>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <!-- Modal End-->
+
               </div>
             </div>
           </div> 
@@ -150,36 +242,36 @@
 
   <!--Cart END-->
   
-  <!--Footer begin-->
-  <section id="footer">
-      <div class="container">
-      <div class="row" style="margin-bottom: 20px;" >
-          <div class="input-group mb-3" style="width: 40%; margin-left: 31%;">
-            <input type="text" class="form-control" placeholder="random@example.com" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-              <a href="javascript:void(0);" style="text-decoration: none;"><span class="input-group-text" id="basic-addon2" style="background-color: #f15b28; color: white;">Subscribe</span></a>
-            </div>
+<!--Footer begin-->
+<section id="footer">
+    <div class="container">
+    <div class="row" style="margin-bottom: 20px;" >
+        <div class="input-group mb-3" style="width: 40%; margin-left: 31%;">
+          <input type="text" class="form-control" placeholder="random@example.com" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <a href="javascript:void(0);" style="text-decoration: none;"><span class="input-group-text" id="basic-addon2" style="background-color: #f15b28; color: white;">Subscribe</span></a>
           </div>
         </div>
+      </div>
 
-        <div class="row text-center text-xs-center text-sm-left text-md-left">
+      <div class="row text-center text-xs-center text-sm-left text-md-left">
 
-          <div class="col-xs-12 col-sm-4 col-md-4">
-            <div class="col_one_third">
-                <div class="widget clearfix">
-                    <h4>Contact Us</h4>
-                    <hr>
-                    <div>
-                      <address>Western Toy Store, Kalamzoo, Michigan</address>
-                      <abbr title="Phone Number"><strong>Phone:</strong></abbr>
-                      +977-1-5186023                        <br>
-                      <abbr title="Email Address"><strong>Email:</strong></abbr>
-                      info@westtoy.com                    
-                    </div>
-                </div>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <div class="col_one_third">
+              <div class="widget clearfix">
+                  <h4>Contact Us</h4>
+                  <hr>
+                  <div>
+                    <address>Western Toy Store, Kalamzoo, Michigan</address>
+                    <abbr title="Phone Number"><strong>Phone:</strong></abbr>
+                    +977-1-5186023                        <br>
+                    <abbr title="Email Address"><strong>Email:</strong></abbr>
+                    info@westtoy.com                    
+                  </div>
+              </div>
 
-            </div>
           </div>
+        </div>
 
           <div class="col-xs-12 col-sm-4 col-md-4" id="break">
             <div class="in-marg1">
@@ -231,6 +323,7 @@
     <!-- Footer END -->
     <!-- -->
   <script src="../Add_ons/js/cart.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="../Add_ons/bootstrap_4_0/jquery/jquery.min.js"></script>
   <script src="../Add_ons/bootstrap_4_0/js/bootstrap.min.js"></script>
 </body>

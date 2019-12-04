@@ -1,34 +1,57 @@
-function cart_updt(val1){
-	subtotal = [];
-	items_l =[]
-	/*val1 = document.getElementById("quantity").value;
-	temp = document.getElementById("price").innerHTML;
+function cart_updt(){
+	var qnt = document.querySelectorAll("[id='quantity']");
+	var price = document.querySelectorAll("[id='u_price']");
+	var priceT = []
+	for(var i = 0; i < qnt.length; i++){
+	num1 = Number(qnt[i].value)
+	num2 = Number(price[i].innerHTML)
+	priceT.push(num1*num2)
+	}
+	var apply = document.querySelectorAll("[id='price']");
+	for(var i = 0; i < apply.length; i++){
+		apply.innerHTML = priceT[i]
+		apply.innerHTML = priceT[i]
+		document.getElementById('price').innerHTML = priceT[i]
+		console.log(priceT[i])
+	}
 
-	var val2 =  temp.substr(1);
+	var ele= document.getElementsByClassName("t_price");
+    for(var i=0;i<ele.length;i++)
+    {
+      ele[i].innerHTML= "$"+priceT[i];
+      console.log(priceT[i])
+    }
 
-	console.log("The val1 is: " + val1 );
-	console.log("The val2 is: " + val2 );
+    var sum = priceT.reduce(function(a, b) { return a + b; }, 0);
+    if (sum!=0){
+	    document.getElementById("subtotal").innerHTML = "$" + sum.toFixed(2)
+	    document.getElementById("shipping").innerHTML = '$25'
+	    var n_sum = sum + 25
+	    document.getElementById("total").innerHTML = "$" + n_sum.toFixed(2)
+	}
 
-	nval1 = Number(val1);
-	nval2 = Number(val2,-2);
-	console.log("The nval1 is: " + nval1 );
-	console.log("The nval2 is: " + nval2 );
-
-	mul = nval1*nval2;
-	subtotal.push(mul);
-	console.log(subtotal);*/
-	var elms = document.querySelectorAll("[id='quantity']");
-	for(var i = 0; i < elms.length; i++) 
-		items_l.push(elms[i].value);
-
-	console.log(items_l)
 }
 
-var qnt = document.querySelectorAll("[id='quantity']");
-var price = document.querySelectorAll("[id='price']");
-for(var i = 0; i < elms.length; i++) {
-	var1 = elms[i].value
-	
-}
-		
+window.onload = function T_tmp(){
+	cart_updt();
+};
 
+$('#quantity').on('input', function () {
+    
+    var value = this.value;
+    var sanitized = $(this).val().replace(/[^0-9]/g, '');
+  	// Update value
+  	$(this).val(sanitized);
+    
+    if (value !== '') {
+        value = parseInt(value);
+        
+        if (value < 1)
+            this.value = 1;
+        else if (value > 10)
+            this.value = 10;
+        else
+        	this.value = 1;
+    }
+    
+});

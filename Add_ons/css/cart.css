@@ -71,7 +71,7 @@
 }
 
 .shopping-cart .items .product .info .price{
-	margin-top: 15px;
+	
     font-weight: bold;
     font-size: 22px;
  }
@@ -82,6 +82,9 @@
     height: 100%;
     padding: 30px;
 }
+.shopping-cart .items .product .info .del{
+		margin-top: 15px;
+	}
 
 .shopping-cart .summary h3{
 	text-align: center;
@@ -89,6 +92,13 @@
 	font-weight: 600;
 	padding-top: 20px;
 	padding-bottom: 20px;
+}
+
+#p_label{
+	margin-bottom: 0px;
+	font-weight: normal;
+    font-size: large;
+
 }
 
 .shopping-cart .summary .summary-item:not(:last-of-type){
@@ -120,7 +130,6 @@
 	.shopping-cart .items .product .info .price {
 		font-weight: bold;
 		font-size: 22px;
-		top: 17px; 
 	}
 
 	.shopping-cart .items .product .info .quantity {
