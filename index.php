@@ -143,11 +143,16 @@
                             try {
                               $statement = $pdo->prepare('INSERT INTO cart (id, name, src, price, quantity, soldby) VALUES (?, ?, ?, ?,?,?)');
                               $statement->execute([$row['id'], $row['name'], $row['src'], $row['price'], '1' , $row['soldby']]);
-                              echo "Added to cart";
+                              echo "<script>";
+                                echo "alert('Added to cart!!!')";
+                              echo "</script>";
                             }
                             catch (\PDOException $e) {
                               if ($e->errorInfo[1] == 1062) {
-                                  echo "Item already in the cart";
+                                  //echo "Item already in the cart";
+                                  echo "<script>";
+                                    echo "alert('Already Added to cart!!!')";
+                                  echo "</script>";
                               }
                             }
                           }

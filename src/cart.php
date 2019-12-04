@@ -113,7 +113,7 @@
                                     echo '</div>';
                                     echo '<div class="col-md-4 quantity">';
                                       echo '<label for="quantity">Quantity:</label>';
-                                      echo '<input id="quantity" type="number" value ="1" class="form-control quantity-input">';
+                                      echo '<input onkeydown="return false" onChange="cart_updt(this.value);" id="quantity" type="number" min="1" max = "10" value ="1" class="form-control quantity-input">';
                                     echo '</div>';
                                     echo '<div class="col-md-3 price">';
                                       //echo '<label for="price">Price:</label>';
@@ -230,10 +230,9 @@
 
     <!-- Footer END -->
     <!-- -->
-
+  <script src="../Add_ons/js/cart.js"></script>
   <script src="../Add_ons/bootstrap_4_0/jquery/jquery.min.js"></script>
   <script src="../Add_ons/bootstrap_4_0/js/bootstrap.min.js"></script>
-  <script src="main.js"></script>
 </body>
 
 </html>
