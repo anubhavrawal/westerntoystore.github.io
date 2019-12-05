@@ -113,7 +113,7 @@
                     if (isset($_POST['signin'])){
                       $email=$_POST['Email'];
                       $password=$_POST['password'];
-                      $sql="SELECT * FROM useraccounts WHERE email='$email'";
+                      $sql= "SELECT * FROM useraccounts WHERE email='$email'";
 
                       $result= $pdo->query($sql);;
                       $count= $result->rowCount();
@@ -123,7 +123,6 @@
                         if (md5(md5($row['salt']).md5($password)) == $row['password']){
                             /*session_register("username");
                             session_register("password"); */
-                            session_start();
                             $_SESSION['sess_user']=$user;
                             header("Location: ../index.php");
                             echo "Login Successful";

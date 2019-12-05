@@ -67,10 +67,20 @@
               <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.php"><i class="fa fa-shopping-cart"></i></a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" id="login" href="account.php">Login/Register</a>
-            </li>
+            <?php
+              if(isset($_SESSION['sess_user'])){
+                echo"<li class='nav-item'>";
+                  echo "<a class='nav-link' id='login' href='account.php'>".$_SESSION['sess_user']."</a>";
+                echo "</li>";
+              }
+              else{
+                echo '<li class="nav-item">';
+                  echo '<a class="nav-link" id="login" href="account.php">Login/Register</a>';
+                echo '</li>';
+              }
+            ?>
 
+            
         </ul>
       </div>
     </div>
@@ -127,9 +137,24 @@
                                     echo '</div>';
 
                                     echo '<div class="col-md-2 del">';
-                                      //echo '';
-                                      echo '<button type="button" class="btn btn-danger">Delete</button>';
+                                      echo '<a href="?id='.$row['id'].'"><button type="button" class="btn btn-danger">Delete</button></a>';
                                     echo '</div>';
+
+                                    if (isset($_GET['id'])) {
+                                      $id_val = $_GET['id'];
+                                      try {
+                                        $statement = $pdo->prepare("DELETE FROM cart WHERE id = $id_val");
+                                        $statement->execute();
+                                        echo "<script>";
+                                          echo "alert('Sucessfully deleted from the cart!!!!')";
+                                        echo "</script>";
+                                        header('Location: cart.php');
+                                      }
+                                      catch (PDOException $e) {
+                                        
+                                      }
+                                      
+                                    }
 
                                   echo '</div>';
                                 echo '</div>';
@@ -139,7 +164,7 @@
                           $Check = True;
                         }
                         if ($Check == False){
-                            echo("No item in the Cart!!!");
+                            echo("<h2>No item in the Cart!!!</h2>");
                         }
                     ?>
               </div>

@@ -37,11 +37,12 @@ window.onload = function T_tmp(){
 };
 
 $('#quantity').on('input', function () {
-    
     var value = this.value;
-    var sanitized = $(this).val().replace(/[^0-9]/g, '');
+    /*
+    
+    var sanitized = $(this).val().replace(/[^-]/g, '');
   	// Update value
-  	$(this).val(sanitized);
+  	$(this).val(sanitized);*/
     
     if (value !== '') {
         value = parseInt(value);
@@ -50,8 +51,6 @@ $('#quantity').on('input', function () {
             this.value = 1;
         else if (value > 10)
             this.value = 10;
-        else
-        	this.value = 1;
     }
     
-});
+})

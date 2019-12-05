@@ -147,7 +147,7 @@
                                 echo "alert('Added to cart!!!')";
                               echo "</script>";
                             }
-                            catch (\PDOException $e) {
+                            catch (PDOException $e) {
                               if ($e->errorInfo[1] == 1062) {
                                   //echo "Item already in the cart";
                                   echo "<script>";
