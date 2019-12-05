@@ -12,16 +12,19 @@
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     if(isset($_SESSION['sess_user'])){
-      $sql = "CREATE TABLE IF NOT EXISTS `".$_SESSION['sess_user']."cart` (
+      $pieces = explode(" ", $_SESSION['sess_user']);
+
+      $sql = $pdo->prepare("CREATE TABLE IF NOT EXISTS `".$pieces[0]."cart` (
       id INT(5) PRIMARY KEY,
       name VARCHAR( 50 ) NOT NULL,
-      src VARCHAR( 50 ) NOT NULL,
-      price VARCHAR( 200 ) NOT NULL,
+      src VARCHAR( 200 ) NOT NULL,
       price FLOAT NOT NULL,
       stock INT(5) NOT NULL,
-      soldby VARCHAR( 50 ) NOT NULL;";
-      $db->exec($sql);
-      $sql_select = "select * from `".$_SESSION['sess_user']."cart` order by id";
+      soldby VARCHAR( 50 ) NOT NULL);");
+      $sql->execute();
+
+
+      $sql_select = "select * from `".$pieces[0]."cart` order by id";
       $user_info = $pdo->query($sql_select);
 
     }
@@ -170,7 +173,12 @@
                                     if (isset($_GET['id'])) {
                                       $id_val = $_GET['id'];
                                       try {
-                                        $statement = $pdo->prepare("DELETE FROM cart WHERE id = $id_val");
+                                        if(isset($_SESSION['sess_user'])){ 
+                                          $statement = $pdo->prepare("DELETE FROM ". $pieces[0] ."WHERE id = $id_val");
+                                        }
+                                        else{
+                                          $statement = $pdo->prepare("DELETE FROM cart WHERE id = $id_val");
+                                        }
                                         $statement->execute();
                                         echo "<script>";
                                           echo "alert('Sucessfully deleted from the cart!!!!')";

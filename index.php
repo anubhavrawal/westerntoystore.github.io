@@ -159,7 +159,13 @@
                     if (isset($_GET['id'])) {
                       if ($_GET['id'] ==$row['id']){
                         try {
-                          $statement = $pdo->prepare('INSERT INTO cart (id, name, src, price, quantity, soldby) VALUES (?, ?, ?, ?,?,?)');
+                          if(isset($_SESSION['sess_user'])){
+                            $pieces = explode(" ", $_SESSION['sess_user']);
+                            $statement = $pdo->prepare('INSERT INTO cart (id, name, src, price, quantity, soldby) VALUES (?, ?, ?, ?,?,?)');
+                          }
+                          else{
+                            $statement = $pdo->prepare('INSERT INTO cart (id, name, src, price, quantity, soldby) VALUES (?, ?, ?, ?,?,?)');
+                          }
                           $statement->execute([$row['id'], $row['name'], $row['src'], $row['price'], '1' , $row['soldby']]);
                           echo "<script>";
                             echo "alert('Added to cart!!!')";
