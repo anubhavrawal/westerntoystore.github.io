@@ -140,50 +140,50 @@
     <!--lightbox BEGIN -->
 
     <section class="gallery-block grid-gallery">
-          <div class="container">
-              <div class="heading">
-                  <h2>TOP SELLING</h2>
-              </div>
-              <div class="row">
-                <?php
-                  while ($row = $user_info->fetch() ) {
-                    $trackid = $row['id'];
-                    echo '<div class="col-md-6 col-lg-4 item">';
-                      echo "<a class='lightbox' href='?id=".$trackid."'>";
-                        echo '<img class="img-fluid image scale-on-hover" src='  .$row['src'] . '>';
-
-                        echo '<div class="middle">';
-                            echo '<button type="button" class="btn btn-primary">Add to Cart</button>';
-                        echo'</div>';
-                        
-                        if (isset($_GET['id'])) {
-                          if ($_GET['id'] ==$row['id']){
-                            try {
-                              $statement = $pdo->prepare('INSERT INTO cart (id, name, src, price, quantity, soldby) VALUES (?, ?, ?, ?,?,?)');
-                              $statement->execute([$row['id'], $row['name'], $row['src'], $row['price'], '1' , $row['soldby']]);
-                              echo "<script>";
-                                echo "alert('Added to cart!!!')";
-                              echo "</script>";
-                            }
-                            catch (PDOException $e) {
-                              if ($e->errorInfo[1] == 1062) {
-                                  //echo "Item already in the cart";
-                                  echo "<script>";
-                                    echo "alert('Already Added to cart!!!')";
-                                  echo "</script>";
-                              }
-                            }
-                          }
-                        //if($_POST['action'] == '') {
-                        }
-
-
-                      echo'</a>';
-                    echo'</div>';
-                  }
-                ?>
-              </div>
+      <div class="container">
+          <div class="heading">
+              <h2>TOP SELLING</h2>
           </div>
+          <div class="row">
+            <?php
+              while ($row = $user_info->fetch() ) {
+                $trackid = $row['id'];
+                echo '<div class="col-md-6 col-lg-4 item">';
+                  echo "<a class='lightbox' href='?id=".$trackid."'>";
+                    echo '<img class="img-fluid image scale-on-hover" src='  .$row['src'] . '>';
+
+                    echo '<div class="middle">';
+                        echo '<button type="button" class="btn btn-primary">Add to Cart</button>';
+                    echo'</div>';
+                    
+                    if (isset($_GET['id'])) {
+                      if ($_GET['id'] ==$row['id']){
+                        try {
+                          $statement = $pdo->prepare('INSERT INTO cart (id, name, src, price, quantity, soldby) VALUES (?, ?, ?, ?,?,?)');
+                          $statement->execute([$row['id'], $row['name'], $row['src'], $row['price'], '1' , $row['soldby']]);
+                          echo "<script>";
+                            echo "alert('Added to cart!!!')";
+                          echo "</script>";
+                        }
+                        catch (PDOException $e) {
+                          if ($e->errorInfo[1] == 1062) {
+                              //echo "Item already in the cart";
+                              echo "<script>";
+                                echo "alert('Already Added to cart!!!')";
+                              echo "</script>";
+                          }
+                        }
+                      }
+                    //if($_POST['action'] == '') {
+                    }
+
+
+                  echo'</a>';
+                echo'</div>';
+              }
+            ?>
+          </div>
+      </div>
     </section>
     <!--lightbox END -->
 

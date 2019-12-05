@@ -19,10 +19,10 @@
 <?php
   if (isset($_POST['signin'])){
     $email=$_POST['Email'];
-    $email = filter_var($email, FILTER_SANITIZE_STRING)
+    $email = filter_var($email, FILTER_SANITIZE_STRING);
     $password=$_POST['password'];
-    $password = filter_var($password, FILTER_SANITIZE_STRING)
-    
+    $password = filter_var($password, FILTER_SANITIZE_STRING);
+
     $sql= "SELECT * FROM useraccounts WHERE email='$email'";
 
     $result= $pdo->query($sql);;
@@ -53,11 +53,11 @@
 <?php
   if (isset($_POST['Register'])){
     $Password_Reg = $_POST['password'];
-    $Password_Reg = filter_var($Password_Reg, FILTER_SANITIZE_STRING)
+    $Password_Reg = filter_var($Password_Reg, FILTER_SANITIZE_STRING);
     $Uname = $_POST['Uname'];
-    $Uname = filter_var($Uname, FILTER_SANITIZE_STRING)
+    $Uname = filter_var($Uname, FILTER_SANITIZE_STRING);
     $email = $_POST['Email'];
-    $email = filter_var($email, FILTER_SANITIZE_STRING)
+    $email = filter_var($email, FILTER_SANITIZE_STRING);
     $salt = 'abcd1';
 
     $sql="SELECT * FROM useraccounts WHERE email='$email'";

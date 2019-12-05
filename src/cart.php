@@ -10,9 +10,25 @@
   try{
     $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS); 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql_select = "select * from cart order by id";
-    $user_info = $pdo->query($sql_select);
 
+    if(isset($_SESSION['sess_user'])){
+      $sql = "CREATE TABLE IF NOT EXISTS `".$_SESSION['sess_user']."cart` (
+      id INT(5) PRIMARY KEY,
+      name VARCHAR( 50 ) NOT NULL,
+      src VARCHAR( 50 ) NOT NULL,
+      price VARCHAR( 200 ) NOT NULL,
+      price FLOAT NOT NULL,
+      stock INT(5) NOT NULL,
+      soldby VARCHAR( 50 ) NOT NULL;";
+      $db->exec($sql);
+      $sql_select = "select * from `".$_SESSION['sess_user']."cart` order by id";
+      $user_info = $pdo->query($sql_select);
+
+    }
+    else{
+      $sql_select = "select * from cart order by id";
+      $user_info = $pdo->query($sql_select);
+    }
     #$pdo = null;
   }
 
@@ -175,7 +191,7 @@
                           $Check = True;
                         }
                         if ($Check == False){
-                            echo("<h2>No item in the Cart!!!</h2>");
+                            echo("<h2 id='defult-cart'>The Cart is empty!!! Browse to add items to cart!!!</h2>");
                         }
                     ?>
               </div>
@@ -260,7 +276,7 @@
                                               <div>
                                                 <button id="payment-button" type="submit" class="btn btn-sm btn-info btn-block">
                                                     <i class="fa fa-lock fa-sm"></i>&nbsp;
-                                                    <span id="payment-button-amount">Pay $100.00</span>
+                                                    <span id="payment-button-amount">Pay $00.00</span>
                                                 </button>
                                               </div>
 
