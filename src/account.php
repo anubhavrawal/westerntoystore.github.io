@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <?php require_once('config.php'); ?>
-
 <?php
   try{
     $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS); 
@@ -15,6 +14,81 @@
     die( $e->getMessage() ); 
   } 
 
+
+?>
+<?php
+  if (isset($_POST['signin'])){
+    $email=$_POST['Email'];
+    $email = filter_var($email, FILTER_SANITIZE_STRING)
+    $password=$_POST['password'];
+    $password = filter_var($password, FILTER_SANITIZE_STRING)
+    
+    $sql= "SELECT * FROM useraccounts WHERE email='$email'";
+
+    $result= $pdo->query($sql);;
+    $count= $result->rowCount();
+
+    if($count==1){
+      $row = $result->fetch();
+
+      if (md5(md5($row['salt']).md5($password)) == $row['password']){
+          $_SESSION['sess_user']=$row['uname'];
+          header("Location: ../index.php");
+          echo "Login Successful";
+          return true;
+      }
+      else {
+          echo "Wrong Username or Password";
+          return false;
+      }
+    }
+
+    else{
+        echo "Wrong Username or Password";
+        return false;
+    }
+    
+  }
+?>
+<?php
+  if (isset($_POST['Register'])){
+    $Password_Reg = $_POST['password'];
+    $Password_Reg = filter_var($Password_Reg, FILTER_SANITIZE_STRING)
+    $Uname = $_POST['Uname'];
+    $Uname = filter_var($Uname, FILTER_SANITIZE_STRING)
+    $email = $_POST['Email'];
+    $email = filter_var($email, FILTER_SANITIZE_STRING)
+    $salt = 'abcd1';
+
+    $sql="SELECT * FROM useraccounts WHERE email='$email'";
+    $result= $pdo->query($sql);;
+    $count= $result->rowCount();
+    echo "the limit". $count;
+    if($count==1){
+      $row = $result->fetch();
+      if ($row['email'] == $email){
+        echo "That Username already exists! Please try again.";
+      }
+    }
+      else{
+        try{
+          $encp_pass = (md5(md5($salt).md5($Password_Reg)));
+          $statement = $pdo->prepare('INSERT INTO useraccounts (uname, email, password, salt) VALUES (?, ?, ?, ?)');
+          $statement->execute([$Uname,$email, $encp_pass, $salt]);
+          echo "New record created successfully";
+          $_SESSION['sess_user']= $Uname;
+          header("Location: ../index.php");
+          echo "New record created successfully";
+        }
+        catch (Exception $e) {
+          echo "Failed to create record for the user";
+        }
+
+      }
+    
+    /*$sqlR = "INSERT INTO useraccounts (uname, email, password, salt) VALUES ('$Uname','$email', '$encp_pass', '$salt')";
+    $pdo->exec($sqlR);*/
+  }
 
 ?>
 
@@ -109,36 +183,7 @@
                     <label class="custom-control-label" for="customCheck1">Remember password</label>
                   </div>
                   <button class="btn btn-lg btn-primary btn-block text-uppercase" name="signin" type="submit">Sign in</button>
-                  <?php
-                    if (isset($_POST['signin'])){
-                      $email=$_POST['Email'];
-                      $password=$_POST['password'];
-                      $sql= "SELECT * FROM useraccounts WHERE email='$email'";
-
-                      $result= $pdo->query($sql);;
-                      $count= $result->rowCount();
-                      if($count==1){
-                        $row = $result->fetch();
-
-                        if (md5(md5($row['salt']).md5($password)) == $row['password']){
-                            /*session_register("username");
-                            session_register("password"); */
-                            $_SESSION['sess_user']=$row['uname'];
-                            header("Location: ../index.php");
-                            echo "Login Successful";
-                            return true;
-                        }
-                        else {
-                            echo "Wrong Username or Password";
-                            return false;
-                        }
-                      }
-                      else{
-                          echo "Wrong Username or Password";
-                          return false;
-                      }
-                    }
-                  ?>
+                  
                   <hr class="my-4">
                   <!--button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fa fa-google mr-2"></i> Sign in with Google</button>
                   <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fa fa-facebook mr-2"></i> Sign in with Facebook</button-->
@@ -159,41 +204,7 @@
                     <label for="PasswordReg">Password</label>
                   </div>
                   <button class="btn btn-lg btn btn-secondary btn-block text-uppercase" name="Register" type="submit">Register</button>
-                  <?php
-                    if (isset($_POST['Register'])){
-                      $Password_Reg = $_POST['password'];
-                      $Uname = $_POST['Uname'];
-                      $email = $_POST['Email'];
-                      $salt = 'abcd1';
 
-                      $sql="SELECT * FROM useraccounts WHERE email='$email'";
-                      $result= $pdo->query($sql);;
-                      $count= $result->rowCount();
-                      if($count==1){
-                        $row = $result->fetch();
-                        if ($row['email'] == $email){
-                          echo "That Username already exists! Please try again.";
-                        }
-                        else{
-                          try{
-                            $encp_pass = (md5(md5($salt).md5($Password_Reg)));
-                            $statement = $pdo->prepare('INSERT INTO useraccounts (uname, email, password, salt) VALUES (?, ?, ?, ?)');
-                            $statement->execute([$Uname,$email, $encp_pass, $salt]);
-                            echo "New record created successfully";
-                          }
-                          catch (Exception $e) {
-                            echo "Failed to create record for the user";
-                          }
- 
-                        }
-
-                      }
-                      
-                      /*$sqlR = "INSERT INTO useraccounts (uname, email, password, salt) VALUES ('$Uname','$email', '$encp_pass', '$salt')";
-                      $pdo->exec($sqlR);*/
-                    }
-
-                  ?>
 
                 </form>
               </div>

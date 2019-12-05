@@ -75,14 +75,23 @@
 
             <?php
               if(isset($_SESSION['sess_user'])){
-                echo"<li class='nav-item'>";
-                  echo "<a class='nav-link' id='login' href='account.php'>".$_SESSION['sess_user']."</a>";
-                echo "</li>";
+                echo"</ul>";
+                echo'<ul class="navbar-nav">';
+                  echo'<!-- Dropdown -->';
+                  echo'<li class="nav-item dropdown">';
+                   echo'<a class="nav-link dropdown-toggle" id="login" href="#" id="navbardrop" data-toggle="dropdown">'.$_SESSION['sess_user']."</a>";
+                   echo'<div id="drop-down" class="dropdown-menu" >';
+                    echo'<a class="dropdown-item" href="src/logout.php">Logout</a>';
+
+                   echo'</div>';
+                  echo'</li>';
+                  echo'</ul>';
               }
               else{
                 echo '<li class="nav-item">';
-                  echo '<a class="nav-link" id="login" href="account.php">Login/Register</a>';
+                  echo '<a class="nav-link" id="login" href="src/account.php">Login/Register</a>';
                 echo '</li>';
+                echo "</ul>";
               }
             ?>
 

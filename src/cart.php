@@ -67,10 +67,9 @@
             <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.php"><i class="fa fa-shopping-cart"></i></a>
           </li>
 
-          </ul>
-
           <?php
             if(isset($_SESSION['sess_user'])){
+              echo"</ul>";
               echo'<ul class="navbar-nav">';
                 echo'<!-- Dropdown -->';
                 echo'<li class="nav-item dropdown">';
@@ -86,6 +85,7 @@
               echo '<li class="nav-item">';
                 echo '<a class="nav-link" id="login" href="account.php">Login/Register</a>';
               echo '</li>';
+              echo "</ul>";
             }
           ?>
 
@@ -187,7 +187,7 @@
                 <div class="summary-item"><span class="text">Discount</span><span class="price" id = "discount" >$0</span></div>
                 <div class="summary-item"><span class="text">Shipping</span><span class="price" id = "shipping" >$0</span></div>
                 <div class="summary-item"><span class="text">Total</span><span class="price" id = "total" >$0</span></div>
-                <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#checkoutModal" >Checkout</button>
+                <button type="button" id = "checkoutBtn" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#checkoutModal" >Checkout</button>
 
                 <!--Modal dialoag for checkout-->
                 <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel" aria-hidden="true">
@@ -214,32 +214,39 @@
                                                   </ul>
                                               </div>
                                               <div class="form-group">
-                                                  <label for="cc-payment" class="control-label ">Payment amount</label>
-                                                  <input id="cc-payment" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" required value="100.00">
+                                                  <label for="payment" class="control-label ">Payment amount</label>
+                                                  <input id="payment" name="payment" type="text" class="form-control" aria-required="true" aria-invalid="false" disabled>
                                                   <span class="invalid-feedback">Enter the payment amount</span>
                                               </div>
+
+                                              <div class="form-group">
+                                                  <label for="payment" class="control-label ">Shipping address</label>
+                                                  <input id="payment" name="shipping" type="text" class="form-control" aria-required="true">
+                                                  <span class="invalid-feedback">Enter the Shipping address</span>
+                                              </div>
+
                                               <div class="form-group has-success">
-                                                  <label for="cc-name" class="control-label ">Name on card</label>
-                                                  <input id="cc-name" name="cc-name" type="text" class="form-control cc-name" required autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
+                                                  <label for="name" class="control-label ">Name on card</label>
+                                                  <input id="name" name="name" type="text" class="form-control name" required autocomplete="name" aria-required="true" aria-invalid="false" aria-describedby="name-error">
                                                   <span class="invalid-feedback">Enter the name as shown on credit card</span>
                                               </div>
                                               <div class="form-group">
-                                                  <label for="cc-number" class="control-label">Card number</label>
-                                                  <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" required="" pattern="[0-9]{16}">
+                                                  <label for="number" class="control-label">Card number</label>
+                                                  <input id="number" name="number" type="tel" class="form-control number identified visa" required="" pattern="[0-9]{16}">
                                                   <span class="invalid-feedback">Enter a valid 16 digit card number</span>
                                               </div>
                                               <div class="row">
                                                   <div class="col-6">
                                                       <div class="form-group">
-                                                          <label for="cc-exp" class="control-label ">Expiration</label>
-                                                          <input id="cc-exp" name="cc-exp" type="tel" class="form-control cc-exp" required placeholder="MM / YY" autocomplete="cc-exp">
+                                                          <label for="exp" class="control-label ">Expiration</label>
+                                                          <input id="exp" name="exp" type="tel" class="form-control exp" required placeholder="MM / YY" autocomplete="cc-exp">
                                                           <span class="invalid-feedback">Enter the expiration date</span>
                                                       </div>
                                                   </div>
                                                   <div class="col-6">
                                                       <label for="x_card_code" class="control-label ">Security code</label>
                                                       <div class="input-group">
-                                                          <input id="x_card_code" name="x_card_code" type="tel" class="form-control cc-cvc" required autocomplete="off">
+                                                          <input id="x_card_code" name="x_card_code" type="tel" class="form-control cvc" required autocomplete="off">
                                                           <span class="invalid-feedback order-last">Enter the 3-digit code on back</span>
                                                       </div>
                                                   </div>
@@ -249,12 +256,14 @@
                                                   <input id="x_zip" name="x_zip" type="text" class="form-control" value="" data-val="true" data-val-required="Please enter the ZIP/Postal code" autocomplete="postal-code">
                                                   <span class="help-block" data-valmsg-for="x_zip" data-valmsg-replace="true"></span>
                                               </div>
+
                                               <div>
                                                 <button id="payment-button" type="submit" class="btn btn-sm btn-info btn-block">
                                                     <i class="fa fa-lock fa-sm"></i>&nbsp;
                                                     <span id="payment-button-amount">Pay $100.00</span>
                                                 </button>
                                               </div>
+
                                           </form>
                                       </div>
                                   </div>

@@ -36,13 +36,14 @@ window.onload = function T_tmp(){
 	cart_updt();
 };
 
+/*
 $('#quantity').on('input', function () {
     var value = this.value;
     /*
     
     var sanitized = $(this).val().replace(/[^-]/g, '');
   	// Update value
-  	$(this).val(sanitized);*/
+  	$(this).val(sanitized);
     
     if (value !== '') {
         value = parseInt(value);
@@ -53,4 +54,10 @@ $('#quantity').on('input', function () {
             this.value = 10;
     }
     
-})
+})*/
+
+$('#checkoutBtn').on('click', function () {
+	$("#payment").val($("#total").html().slice(1,$("#total").html().length));
+	$("#payment-button-amount").html("Pay $"+ $("#payment").val());
+
+});
