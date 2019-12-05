@@ -123,7 +123,7 @@
                         if (md5(md5($row['salt']).md5($password)) == $row['password']){
                             /*session_register("username");
                             session_register("password"); */
-                            $_SESSION['sess_user']=$user;
+                            $_SESSION['sess_user']=$row['uname'];
                             header("Location: ../index.php");
                             echo "Login Successful";
                             return true;

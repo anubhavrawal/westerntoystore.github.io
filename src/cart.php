@@ -44,7 +44,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="collapse navbar-collapse collapse hide" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item">
@@ -63,25 +63,36 @@
             <a class="nav-link" href="action.php">Action</a>
           </li>
 
-            <li class="nav-item active">
-              <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.php"><i class="fa fa-shopping-cart"></i></a>
-            </li>
+          <li class="nav-item active">
+            <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.php"><i class="fa fa-shopping-cart"></i></a>
+          </li>
 
-            <?php
-              if(isset($_SESSION['sess_user'])){
-                echo"<li class='nav-item'>";
-                  echo "<a class='nav-link' id='login' href='account.php'>".$_SESSION['sess_user']."</a>";
-                echo "</li>";
-              }
-              else{
-                echo '<li class="nav-item">';
-                  echo '<a class="nav-link" id="login" href="account.php">Login/Register</a>';
-                echo '</li>';
-              }
-            ?>
+          </ul>
+
+          <?php
+            if(isset($_SESSION['sess_user'])){
+              echo'<ul class="navbar-nav">';
+                echo'<!-- Dropdown -->';
+                echo'<li class="nav-item dropdown">';
+                 echo'<a class="nav-link dropdown-toggle" id="login" href="#" id="navbardrop" data-toggle="dropdown">'.$_SESSION['sess_user']."</a>";
+                 echo'<div id="drop-down" class="dropdown-menu" >';
+                  echo'<a class="dropdown-item" href="logout.php">Logout</a>';
+
+                 echo'</div>';
+                echo'</li>';
+                echo'</ul>';
+            }
+            else{
+              echo '<li class="nav-item">';
+                echo '<a class="nav-link" id="login" href="account.php">Login/Register</a>';
+              echo '</li>';
+            }
+          ?>
 
             
-        </ul>
+        
+        
+
       </div>
     </div>
   </nav>

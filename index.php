@@ -73,9 +73,18 @@
               <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="src/Cart.php"><i class="fa fa-shopping-cart"></i></a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" id="login" href="src/account.php">Login/Register</a>
-            </li>
+            <?php
+              if(isset($_SESSION['sess_user'])){
+                echo"<li class='nav-item'>";
+                  echo "<a class='nav-link' id='login' href='account.php'>".$_SESSION['sess_user']."</a>";
+                echo "</li>";
+              }
+              else{
+                echo '<li class="nav-item">';
+                  echo '<a class="nav-link" id="login" href="account.php">Login/Register</a>';
+                echo '</li>';
+              }
+            ?>
 
           </ul>
         </div>
