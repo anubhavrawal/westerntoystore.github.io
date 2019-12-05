@@ -59,5 +59,9 @@ $('#quantity').on('input', function () {
 $('#checkoutBtn').on('click', function () {
 	$("#payment").val($("#total").html().slice(1,$("#total").html().length));
 	$("#payment-button-amount").html("Pay $"+ $("#payment").val());
-
 });
+
+$('#payment-button').on('click', function () {
+	alert("Order Placed!!!")
+});
+

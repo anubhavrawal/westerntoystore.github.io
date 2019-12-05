@@ -8,6 +8,9 @@
    size: auto;
    text-align: center;
 }
+body{
+	margin-bottom: 16px;
+}
 
 
 .left.img-cont{
@@ -29,11 +32,10 @@
 
 .info{
 	
-	width: 100%;
+	width: 110%;
 	margin-right: 2em;
 	margin-left: 2em;
-	font-size: large;
-	font-family: 'Grenze', serif;
+	font-size: larger;
 }
 
 .img-cont{

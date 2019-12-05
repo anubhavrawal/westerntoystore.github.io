@@ -36,11 +36,11 @@
 
 <body>
   
-  <!--div class="preload">
+  <div class="preload">
     <img src="img/loading.gif" alt="Loading" />
   </div>
   
-  <div class="web-content"-->
+  <div class="web-content">
     <!--Nav bar begin-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-cust static-top">
       <div class="container">
@@ -161,12 +161,12 @@
                         try {
                           if(isset($_SESSION['sess_user'])){
                             $pieces = explode(" ", $_SESSION['sess_user']);
-                            $statement = $pdo->prepare('INSERT INTO cart (id, name, src, price, quantity, soldby) VALUES (?, ?, ?, ?,?,?)');
+                            $statement = $pdo->prepare('INSERT INTO ' .$pieces[0]. 'cart (id, name, src, price, quantity, soldby, description) VALUES (?, ?, ?, ?,?,?,?)');
                           }
                           else{
-                            $statement = $pdo->prepare('INSERT INTO cart (id, name, src, price, quantity, soldby) VALUES (?, ?, ?, ?,?,?)');
+                            $statement = $pdo->prepare('INSERT INTO cart (id, name, src, price, quantity, soldby, description) VALUES (?, ?,?, ?, ?,?,?)');
                           }
-                          $statement->execute([$row['id'], $row['name'], $row['src'], $row['price'], '1' , $row['soldby']]);
+                          $statement->execute([$row['id'], $row['name'], $row['src'], $row['price'], '1' , $row['soldby'], $row['description'] ]);
                           echo "<script>";
                             echo "alert('Added to cart!!!')";
                           echo "</script>";
@@ -268,7 +268,13 @@
               <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
                 <p class="h6">Copyright &copy All right Reversed by<a class="text-green ml-2" href="#" target="_blank">Western Toy Store </a></p>
               </div>
-            </div>  
+            </div>
+            
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                <p class="h6">Image Credit<a class="text-green ml-2" href="#" target="_blank">Google Images </a></p>
+              </div>
+          </div> 
         </div>
       </section>
 

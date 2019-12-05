@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php require_once('config.php'); ?>
 <html>
 
 <head>
@@ -12,10 +13,16 @@
 	<link rel="stylesheet" type="text/css" href="../Add_ons/css/about.css">
 
   <link href="https://fonts.googleapis.com/css?family=Grenze&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 
 <body>
+    <div class="preload">
+    <img src="../img/loading.gif" alt="Loading" />
+  </div>
+  
+  <div class="web-content">
 	<!--Nav bar begin-->
 	 <nav class="navbar navbar-expand-lg navbar-dark bg-cust static-top">
     <div class="container">
@@ -37,7 +44,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="puzzel.php">Puzzel</a>
+            <a class="nav-link" href="catlog.php">Puzzel</a>
           </li>
 
           <li class="nav-item">
@@ -48,9 +55,27 @@
               <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Cart"href="Cart.php"><i class="fa fa-shopping-cart"></i></a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" id="login" href="account.php">Login/Register</a>
-            </li>
+            <?php
+              if(isset($_SESSION['sess_user'])){
+                echo"</ul>";
+                echo'<ul class="navbar-nav">';
+                  echo'<!-- Dropdown -->';
+                  echo'<li class="nav-item dropdown">';
+                   echo'<a class="nav-link dropdown-toggle" id="login" href="#" id="navbardrop" data-toggle="dropdown">'.$_SESSION['sess_user']."</a>";
+                   echo'<div id="drop-down" class="dropdown-menu" >';
+                    echo'<a class="dropdown-item" href="src/logout.php">Logout</a>';
+
+                   echo'</div>';
+                  echo'</li>';
+                  echo'</ul>';
+              }
+              else{
+                echo '<li class="nav-item">';
+                  echo '<a class="nav-link" id="login" href="account.php">Login/Register</a>';
+                echo '</li>';
+                echo "</ul>";
+              }
+            ?>
 
         </ul>
       </div>
@@ -160,16 +185,22 @@
             <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
               <p class="h6">Copyright &copy All right Reversed by<a class="text-green ml-2" href="#" target="_blank">Western Toy Store </a></p>
             </div>
-          </div>  
+          </div> 
+          <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                <p class="h6">Image Credit<a class="text-green ml-2" href="#" target="_blank">Google Images </a></p>
+              </div>
+          </div>
       </div>
     </section>
 
     <!-- Footer END -->
     <!-- -->
+  </div>
 
+  <script src="../Add_ons/js/common.js"></script>
 	<script src="../Add_ons/bootstrap_4_0/jquery/jquery.min.js"></script>
 	<script src="../Add_ons/bootstrap_4_0/js/bootstrap.min.js"></script>
-	<script src="main.js"></script>
 </body>
 
 </html>

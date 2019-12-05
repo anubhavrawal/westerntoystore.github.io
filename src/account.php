@@ -17,6 +17,28 @@
 
 ?>
 <?php
+  function db_crt() {
+    if(isset($_SESSION['sess_user'])){
+      $pieces = explode(" ", $_SESSION['sess_user']);
+      $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS); 
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+      $sql = $pdo->prepare("CREATE TABLE IF NOT EXISTS `".$pieces[0]."cart` (
+      id INT(5) PRIMARY KEY,
+      name VARCHAR( 50 ) NOT NULL,
+      src VARCHAR( 200 ) NOT NULL,
+      price FLOAT NOT NULL,
+      quantity INT(5) NOT NULL,
+      soldby VARCHAR( 50 ) NOT NULL,
+      description TEXT NOT NULL);");
+      $sql->execute();
+
+      echo"<script>";
+        echo "alert('Created a table')";
+      echo "</script>";
+    }
+  }
+
   if (isset($_POST['signin'])){
     $email=$_POST['Email'];
     $email = filter_var($email, FILTER_SANITIZE_STRING);
@@ -33,6 +55,7 @@
 
       if (md5(md5($row['salt']).md5($password)) == $row['password']){
           $_SESSION['sess_user']=$row['uname'];
+          db_crt();
           header("Location: ../index.php");
           echo "Login Successful";
           return true;
@@ -77,6 +100,7 @@
           $statement->execute([$Uname,$email, $encp_pass, $salt]);
           echo "New record created successfully";
           $_SESSION['sess_user']= $Uname;
+          db_crt();
           header("Location: ../index.php");
           echo "New record created successfully";
         }
@@ -110,11 +134,11 @@
 </head>
 
 <body>
-  <!--div class="preload">
+  <div class="preload">
     <img src="../img/loading.gif" alt="Loading" />
-  </div-->
+  </div>
   
-  <!--div class="web-content"-->
+  <div class="web-content">
     <!--Nav bar begin-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-cust static-top">
       <div class="container">
@@ -289,7 +313,13 @@
               <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
                 <p class="h6">Copyright &copy All right Reversed by<a class="text-green ml-2" href="#" target="_blank">Western Toy Store </a></p>
               </div>
-            </div>  
+            </div>
+            
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                <p class="h6">Image Credit<a class="text-green ml-2" href="#" target="_blank">Google Images </a></p>
+              </div>
+            </div>   
         </div>
       </section>
     </div>

@@ -13,17 +13,6 @@
 
     if(isset($_SESSION['sess_user'])){
       $pieces = explode(" ", $_SESSION['sess_user']);
-
-      $sql = $pdo->prepare("CREATE TABLE IF NOT EXISTS `".$pieces[0]."cart` (
-      id INT(5) PRIMARY KEY,
-      name VARCHAR( 50 ) NOT NULL,
-      src VARCHAR( 200 ) NOT NULL,
-      price FLOAT NOT NULL,
-      stock INT(5) NOT NULL,
-      soldby VARCHAR( 50 ) NOT NULL);");
-      $sql->execute();
-
-
       $sql_select = "select * from `".$pieces[0]."cart` order by id";
       $user_info = $pdo->query($sql_select);
 
@@ -50,10 +39,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="../Add_ons/js/common.js"></script>
 
 </head>
 
 <body>
+  <div class="preload">
+    <img src="../img/loading.gif" alt="Loading" />
+  </div>
+  
+  <div class="web-content">
   <!--Nav bar begin-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-cust static-top">
     <div class="container">
@@ -107,11 +102,8 @@
               echo "</ul>";
             }
           ?>
-
+        </ul>
             
-        
-        
-
       </div>
     </div>
   </nav>
@@ -173,20 +165,18 @@
                                     if (isset($_GET['id'])) {
                                       $id_val = $_GET['id'];
                                       try {
-                                        if(isset($_SESSION['sess_user'])){ 
-                                          $statement = $pdo->prepare("DELETE FROM ". $pieces[0] ."WHERE id = $id_val");
+                                        if(isset($_SESSION['sess_user'])){
+                                          $pieces = explode(" ", $_SESSION['sess_user']);
+                                          $statement = $pdo->prepare("DELETE FROM ". $pieces[0] ."cart WHERE id = $id_val");
                                         }
                                         else{
                                           $statement = $pdo->prepare("DELETE FROM cart WHERE id = $id_val");
                                         }
                                         $statement->execute();
-                                        echo "<script>";
-                                          echo "alert('Sucessfully deleted from the cart!!!!')";
-                                        echo "</script>";
                                         header('Location: cart.php');
                                       }
                                       catch (PDOException $e) {
-                                        
+                                        die( $e->getMessage() ); 
                                       }
                                       
                                     }
@@ -200,6 +190,8 @@
                         }
                         if ($Check == False){
                             echo("<h2 id='defult-cart'>The Cart is empty!!! Browse to add items to cart!!!</h2>");
+                            echo("<h2 id='defult-cart1'>The Cart is empty!!! <br/>  Browse to add items to cart!!!</h2>");
+                            echo("<h2 id='defult-cart2'> The Cart is empty!!! <br/>  Browse to add items to cart!!!</h2>");
                         }
                     ?>
               </div>
@@ -228,7 +220,7 @@
                                               <h3 class="text-center">Pay Invoice</h3>
                                           </div>
                                           <hr>
-                                          <form method="post" novalidate="novalidate" class="needs-validation">
+                                          <form method="post" name="Payment-Made" novalidate="novalidate" class="needs-validation">
                                               <div class="form-group text-center">
                                                   <ul class="list-inline">
                                                       <li class="list-inline-item"><i class="text-muted fa fa-cc-visa fa-2x"></i></li>
@@ -245,7 +237,7 @@
 
                                               <div class="form-group">
                                                   <label for="payment" class="control-label ">Shipping address</label>
-                                                  <input id="payment" name="shipping" type="text" class="form-control" aria-required="true">
+                                                  <input id="payment" name="shipping" type="text" class="form-control" aria-required="true" required>
                                                   <span class="invalid-feedback">Enter the Shipping address</span>
                                               </div>
 
@@ -256,7 +248,7 @@
                                               </div>
                                               <div class="form-group">
                                                   <label for="number" class="control-label">Card number</label>
-                                                  <input id="number" name="number" type="tel" class="form-control number identified visa" required="" pattern="[0-9]{16}">
+                                                  <input id="number" name="number" type="tel" class="form-control number identified visa" required="" pattern="[0-9]{16}" required>
                                                   <span class="invalid-feedback">Enter a valid 16 digit card number</span>
                                               </div>
                                               <div class="row">
@@ -385,12 +377,21 @@
             <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
               <p class="h6">Copyright &copy All right Reversed by<a class="text-green ml-2" href="#" target="_blank">Western Toy Store </a></p>
             </div>
-          </div>  
+          </div> 
+          
+          <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                <p class="h6">Image Credit<a class="text-green ml-2" href="#" target="_blank">Google Images </a></p>
+              </div>
+          </div>
       </div>
     </section>
 
     <!-- Footer END -->
     <!-- -->
+
+  </div>
+  <script src="../Add_ons/js/common.js"></script>
   <script src="../Add_ons/js/cart.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="../Add_ons/bootstrap_4_0/jquery/jquery.min.js"></script>
